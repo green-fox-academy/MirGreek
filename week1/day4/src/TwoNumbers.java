@@ -9,7 +9,7 @@ public class TwoNumbers {
     System.out.println(numOne * numTwo);
     System.out.println(22 / 13.);
     System.out.println(numOne / numTwo);
-    System.out.println(22 % 13);
+    System.out.println(22. % 10.);
 
 
     // Create a program that prints a few operations on two numbers: 22 and 13
