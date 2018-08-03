@@ -7,8 +7,6 @@ public class IwontCheatOnTHeExams {
     for (int i = 1; i < 101; ++i) {
       java.lang.String counter= i+ myOutput;
           System.out.println(myOutput);
-        //PrintStream out = System.out;
-      //out.println("test")
 
     }
   }
