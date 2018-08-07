@@ -13,7 +13,7 @@ public class TakesLonger {
 
       quote = quote1 + "always takes longer than " + quote3;
 
-
+    //newString.insert(quote.indexOf("you")
       System.out.println(quote);
     }
   }
