@@ -12,7 +12,7 @@ public class Calculator {
     String op = input.next();
     double number1 = input.nextDouble();
     double number2 = input.nextDouble();
-    int output = 0;
+    //double output = 0;
     operations.add(op);
     operations.add(number1);
     operations.add(number2);
@@ -24,12 +24,13 @@ public class Calculator {
 
     System.out.println( "Ezeket adtad meg: " + op + " és " + operations.get(1) + " és " + operations.get(2));
 
-    calculate(operations,op,number1,number2,output);
 
+    //calculate(operations,op,number1,number2);
+    System.out.println(calculate(operations,op,number1,number2));
     //System.out.println(output);
   }
-  static void calculate(Object operations, String op, double number1, double number2, double output){
-
+  static double calculate(Object operations, String op, double number1, double number2){
+    double output=0;
       if (op.equalsIgnoreCase("+")){
           output = number1 + number2;
       } else if (op.equalsIgnoreCase("-")) {
@@ -39,7 +40,8 @@ public class Calculator {
       } else if (op.equalsIgnoreCase("/")) {
         output = number1 / number2;
     }
-    System.out.println(output);
+    return output;
+    //System.out.println(output);
   }
   }
 
