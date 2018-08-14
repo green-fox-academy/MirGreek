@@ -31,16 +31,16 @@ public class Logs {
   }
 
   static void rate(List<String> myLines, List<String> newLines) {
-    int getIT = 0;
+    double getIT = 0;
     int getPOST = 0;
     double myRatio = 0;
     for (int i = 0; i < myLines.size(); i++) {
-      if (Arrays.asList(myLines.get(i).split("   ")[2]).contains("GET")) {
+      if (myLines.get(i).split("   ")[2].contains("GET")) {
         getIT = getIT + 1;
       }
     }
     for (int j = 0; j < myLines.size(); j++) {
-      if ((Arrays.asList(myLines.get(j).split("   ")[2])).contains("POST")) {
+      if ((myLines.get(j).split("   ")[2]).contains("POST")) {
         getPOST = getPOST + 1;
       }
     }
@@ -49,7 +49,7 @@ public class Logs {
     } catch (ArithmeticException e) {
       System.out.println("Divided by zero");
     }
-    System.out.println(getPOST);
+    System.out.println(myRatio);
 
 
   }
