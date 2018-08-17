@@ -1,38 +1,35 @@
 import javax.swing.*;
 import java.awt.*;
+
+import static java.awt.Color.WHITE;
+import static java.awt.Color.white;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class HomePracticaFractal {
   public static void mainDraw(Graphics graphics) {
-    int x = WIDTH/3;
-    int y = HEIGHT/3;
-    int width = WIDTH/3;
-    int height = HEIGHT/3;
-    int size = 600;
-
-    graphics.drawRect(size/3,size/3,width, height); //középső
-    //graphics.drawRect(size/3,0,width, height); //felső
-    //graphics.drawRect(0,size/3,width, height); //bal
-    //graphics.drawRect(size/3,(size/3)*2,width, height); //alsó
-    //graphics.drawRect((size/3)*2,size/3,width, height); //jobb
-
-    draw(size, width, height,graphics);
+    int size = 500;
+    int x = 1;
+    int y = 1;
+    graphics.setColor(Color.WHITE);
+    graphics.fillRect(x,y,WIDTH,HEIGHT);
+    drawFractal(x,y, size, graphics);
   }
-  public static void draw( int size, int width, int height, Graphics graphics){
+  public static void draw( int x,int y, int size, Graphics graphics){
+    graphics.setColor(new Color((int) (Math.random() * 255), (int) (Math.random() * 255), (int) (Math.random() * 255), 255));
+    graphics.drawRect(x , y, size, size);
 
-      graphics.drawRect(size / 3, 0, width, height); //felső
-      graphics.drawRect(0, size / 3, width, height); //bal
-      graphics.drawRect(size / 3, (size / 3) * 2, width, height); //alsó
-      graphics.drawRect((size / 3) * 2, size / 3, width, height); //jobb
-
-    if (size > 5) {
-     draw(size/3, width/3, height, graphics);
-      //draw(size/3, width/2, height, graphics);
-      //draw(size/3, width/2, height, graphics);
-      //draw(size/3, width, height, graphics);
-    }
   }
+  public static void drawFractal(int x, int y, int size, Graphics graphics){
+      draw(x,y, size, graphics);
 
+
+      if ( size > 5){
+        drawFractal(x + size / 3, y ,size / 3, graphics);
+        drawFractal(x , y + size /3 ,size / 3, graphics);
+        drawFractal(x + size * 1/3 , y + size *2/3 ,size / 3, graphics);
+        drawFractal(x + size * 2/3 , y + size *1/3 ,size / 3, graphics);
+      }
+  }
 
 
 
@@ -45,13 +42,17 @@ public class HomePracticaFractal {
   static int WIDTH = 600;
   static int HEIGHT = 600;
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws InterruptedException {
     JFrame jFrame = new JFrame("Drawing");
     jFrame.setSize(new Dimension(WIDTH, HEIGHT));
     jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     jFrame.add(new ImagePanel());
     jFrame.setLocationRelativeTo(null);
     jFrame.setVisible(true);
+    while (true) {
+      jFrame.repaint();
+      Thread.sleep(100);
+    }
   }
 
 static class ImagePanel extends JPanel {
