@@ -4,20 +4,21 @@ public class Pirate {
     String drink = "Pour me anudder!";
     boolean pirateDies = false;
     int chance = ((int)(Math.random() *10)/3);
-    System.out.println(chance);
-    System.out.println(howsItGoingMate(answer, drink,Boolean.parseBoolean("alive")));
+
+    System.out.println(howsItGoingMate(answer, drink, Boolean.parseBoolean("alive")));
 
     brawl(chance, pirateDies);
   }
-  public static void drinkSomeRum(String drink2,boolean pirateDies){
+  public static String drinkSomeRum(String drink,boolean pirateDies){
     if (pirateDies){
       die();
     }
-    System.out.println(drink2);
+    return drink;
 
   }
   public static String howsItGoingMate(String answer,String drink,boolean pirateDies){
     for (int i = 0; i <4 ; i++) {
+
       if (pirateDies){
         die();
       }
@@ -28,23 +29,29 @@ public class Pirate {
     return answer;
 
   }
-  static void die(){
-    System.out.println("He's dead");
+  public static String die(){
+    String death = "He's dead";
+    return death;
   }
-  
 
-  static void brawl(int chance, boolean pirateDies){
 
+  static String brawl(int chance, boolean pirateDies){
     chance = ((int)(Math.random() *10)/3);
     if (pirateDies){
       die();
     }
       if (chance == 1){
-        System.out.println( "Pirate1 died :(");
+        return  "Pirate1 died :(";
       } else if (chance == 2){
-        System.out.println("Pirate2 died :(");
+        return "Pirate2 died :(";
       } else
-      System.out.println("Both survived");
+      return "Both survived";
+    }
+
+
+    public static String parrot(){
+      System.out.println("paa");
+      return "paa";
     }
 }
 /*
