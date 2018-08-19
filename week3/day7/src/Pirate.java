@@ -31,6 +31,7 @@ public class Pirate {
   static void die(){
     System.out.println("He's dead");
   }
+  
 
   static void brawl(int chance, boolean pirateDies){
 
