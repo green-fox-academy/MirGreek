@@ -16,6 +16,15 @@ public class Homework {
     person1.gender = "female";
 
     person1.introduce();
+
+    Student student = new Student();
+    student.previousOrganization =
+     student.name = "Jane Doe";
+    student.age = 30;
+    student.gender = "female";
+    student.previousOrganization = "School of Life";
+    student.skippedDays = 0;
+    student.introduce();
   }
 
 
