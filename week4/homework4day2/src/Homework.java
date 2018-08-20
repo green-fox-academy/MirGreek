@@ -3,25 +3,21 @@ import java.util.ArrayList;
 public class Homework {
   public static void main(String[] args) {
     ArrayList<Mentor> mentors = new ArrayList<>();
-    ArrayList<Mentor> studnents = new ArrayList<>();
-    ArrayList<Mentor> people = new ArrayList<>();
-    ArrayList<Mentor> sponsors = new ArrayList<>();
+    ArrayList<Student> students = new ArrayList<>();
+    ArrayList<Person> people = new ArrayList<>();
+    ArrayList<Sponsor> sponsors = new ArrayList<>();
 
-    Person person = new Person();
+    Person person = new Person("Mir",20,"girly");
     person.name = "Mir";
     person.age = 27;
     person.gender = "girl";
+    people.add(person);
 
-    person.introduce();
-    person.myGoal();
-
-    Person person1 =new Person();
-    person1.name = "Jane Doe";
-    person1.age = 30;
-    person1.gender = "female";
-
-    person1.introduce();
-    person1.myGoal();
+    Person person1 =new Person("Jane Doe",30, "female");
+    person.name = "Jane Doe";
+    person.age = 30;
+    person.gender = "female";
+    people.add(person1);
 
     Student student = new Student("Jane Doe",30, "female" ,"School of Life",0);
      /*student.name = "Jane Doe";
@@ -29,8 +25,8 @@ public class Homework {
     student.gender = "female";
     student.previousOrganization = "School of Life";
     student.skippedDays = 0;*/
-    student.introduce();
-    student.myGoal();
+    students.add(student);
+
     student.skipDays(3);
 
 
@@ -39,18 +35,32 @@ public class Homework {
     mentor.age = 30;
     mentor.gender = "female";
     mentor.level = "intermediate";*/
-    mentor.introduce();
-    mentor.myGoal();
-
+    mentors.add(mentor);
 
     Sponsor sponsor = new Sponsor("Jane Doe",30, "female" , "Google",0);
-    sponsor.introduce();
-    sponsor.myGoal();
+    sponsors.add(sponsor);
+    //iterate through the function calls
 
+    for (int i = 0; i <3 ; i++) {
+      sponsor.hire(i);
+    }
+    for (Person p : people) {
+      person.introduce();
+      person.myGoal();
+    }
+    for (Student s: students) {
+      student.introduce();
+      student.myGoal();
+    }
 
+    for (Mentor m: mentors) {
+      mentor.introduce();
+      mentor.myGoal();
+    }
 
-    for (int i = 0; i <5 ; i++) {
-
+    for (Sponsor sp: sponsors) {
+      sponsor.introduce();
+      sponsor.myGoal();
     }
   }
 

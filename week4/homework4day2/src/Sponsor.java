@@ -21,5 +21,8 @@ public class Sponsor {
     this.company =company;
     this.hiredStudents = hiredStudents;
   }
-
+    public int hire(int hiredStudents){
+    this.hiredStudents = hiredStudents +1;
+    return hiredStudents;
+  }
 }
