@@ -3,7 +3,9 @@ import java.util.ArrayList;
 public class Homework {
   public static void main(String[] args) {
     ArrayList<Mentor> mentors = new ArrayList<>();
-
+    ArrayList<Mentor> studnents = new ArrayList<>();
+    ArrayList<Mentor> people = new ArrayList<>();
+    ArrayList<Mentor> sponsors = new ArrayList<>();
 
     Person person = new Person();
     person.name = "Mir";
@@ -19,6 +21,7 @@ public class Homework {
     person1.gender = "female";
 
     person1.introduce();
+    person1.myGoal();
 
     Student student = new Student("Jane Doe",30, "female" ,"School of Life",0);
      /*student.name = "Jane Doe";
@@ -27,6 +30,9 @@ public class Homework {
     student.previousOrganization = "School of Life";
     student.skippedDays = 0;*/
     student.introduce();
+    student.myGoal();
+    student.skipDays(3);
+
 
     Mentor mentor = new Mentor("Jane Doe",30, "female" ,"intermediate");
     /*mentor.name = "Jane Doe";
@@ -34,7 +40,18 @@ public class Homework {
     mentor.gender = "female";
     mentor.level = "intermediate";*/
     mentor.introduce();
+    mentor.myGoal();
 
+
+    Sponsor sponsor = new Sponsor("Jane Doe",30, "female" , "Google",0);
+    sponsor.introduce();
+    sponsor.myGoal();
+
+
+
+    for (int i = 0; i <5 ; i++) {
+
+    }
   }
 
 

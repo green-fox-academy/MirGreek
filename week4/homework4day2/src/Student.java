@@ -28,4 +28,8 @@ Student(): sets name to Jane Doe, age to 30, gender to female, previousOrganizat
     this.previousOrganization =previousOrganization;
     this.skippedDays =skippedDays;
   }
+  public void skipDays(int numberOfDays){
+    this.skippedDays += numberOfDays;
+    System.out.println(this.skippedDays);
+  }
 }
