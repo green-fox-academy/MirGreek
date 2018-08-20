@@ -1,8 +1,11 @@
+import java.util.ArrayList;
+
 public class Homework {
   public static void main(String[] args) {
+    ArrayList<Mentor> mentors = new ArrayList<>();
+
 
     Person person = new Person();
-
     person.name = "Mir";
     person.age = 27;
     person.gender = "girl";
@@ -17,14 +20,21 @@ public class Homework {
 
     person1.introduce();
 
-    Student student = new Student();
-    student.previousOrganization =
-     student.name = "Jane Doe";
+    Student student = new Student("Jane Doe",30, "female" ,"School of Life",0);
+     /*student.name = "Jane Doe";
     student.age = 30;
     student.gender = "female";
     student.previousOrganization = "School of Life";
-    student.skippedDays = 0;
+    student.skippedDays = 0;*/
     student.introduce();
+
+    Mentor mentor = new Mentor("Jane Doe",30, "female" ,"intermediate");
+    /*mentor.name = "Jane Doe";
+    mentor.age = 30;
+    mentor.gender = "female";
+    mentor.level = "intermediate";*/
+    mentor.introduce();
+
   }
 
 

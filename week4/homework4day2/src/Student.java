@@ -21,10 +21,11 @@ Student(): sets name to Jane Doe, age to 30, gender to female, previousOrganizat
     System.out.println( "Be a junior software developer.");
   }
 
-  public Student() {
+  public Student(String name, int age, String gender, String previousOrganization,int skippedDays ) {
     this.name = name;
     this.age = age;
     this.gender = gender;
-
+    this.previousOrganization =previousOrganization;
+    this.skippedDays =skippedDays;
   }
 }
