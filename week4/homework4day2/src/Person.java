@@ -18,6 +18,12 @@ public class Person {
     this.gender = gender;
 
   }
+  public Person() {
+    this.name = "Jane Doe";
+    this.age = 30;
+    this.gender = "female";
+
+  }
 }
 
 

@@ -1,9 +1,11 @@
-public class Sponsor {
-  String name= "SmartIam";
-  int age = 56;
-  String gender = "man";
-  String company = "CoolPlaceToWork";
-  int hiredStudents = 15;
+public class Sponsor extends Person {
+
+  String company;
+  int hiredStudents;
+
+  public Sponsor(String name, int age, String gender) {
+    super(name, age, gender);
+  }
 
 
   public void introduce() {
@@ -15,14 +17,17 @@ public class Sponsor {
   }
 
   public Sponsor(String name, int age, String gender, String company, int hiredStudents) {
-    this.name = name;
-    this.age = age;
-    this.gender = gender;
-    this.company =company;
+    this.company = company;
     this.hiredStudents = hiredStudents;
   }
-    public int hire(int hiredStudents){
-    this.hiredStudents = hiredStudents +1;
+
+  public int hire() {
+    this.hiredStudents = hiredStudents + 1;
     return hiredStudents;
+  }
+
+  public Sponsor() {
+    this.company = "Google";
+    this.hiredStudents = 0;
   }
 }

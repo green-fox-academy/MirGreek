@@ -1,11 +1,10 @@
-public class Mentor {
-  String name = "Kamo";
-  int age = 35;
-  String gender = "man";
-  String previousOrganization = "GF";
-  int skippedDays = 3;
+public class Mentor extends Person {
+
   String level = "Senior";
 
+  public Mentor(String name, int age, String gender) {
+    super(name, age, gender);
+  }
 
 
   public void introduce() {
@@ -22,4 +21,11 @@ public class Mentor {
     this.gender = gender;
     this.level = level;
   }
+  public Mentor() {
+    this.name = "Jane Doe";
+    this.age = 30;
+    this.gender = "female";
+    this.level = "intermediate";
+  }
+
 }
