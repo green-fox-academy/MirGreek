@@ -10,7 +10,8 @@ public class SumTest {
   public void sumWorksOrNot(){
   Sum sumList = new Sum();
   sumList.elements(1);
-  Assert.assertEquals(1,sumList.sumMethod());
+  sumList.elements(2);
+  Assert.assertEquals(3,sumList.sumMethod());
 }
 
 
