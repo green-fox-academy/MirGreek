@@ -1,14 +1,15 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 
 public class Anagram {
   public static void main(String[] args) {
-    String a = "";
-    String string1 = "string";
-    String string2 = "grints";
 
-    System.out.println(anagram(string1, string2));
+    String string1 = "bármi";
+    String string2 = "bárki";
+
+    anagram(string1, string2);
 
   }
     public static boolean anagram(String string1, String string2){
@@ -20,14 +21,15 @@ public class Anagram {
 
       }
       for (int j = 0; j < string2.length(); j++) {
-        list2.add(string1.charAt(j)) ;
+        list2.add(string2.charAt(j)) ;
         }
-      Arrays.sort(list.toArray());
-      Arrays.sort(list2.toArray());
+        Collections.sort(list);
+        Collections.sort(list2);
+      
          // if (list.containsAll(list2)){
            // System.out.println("anagram");
           //}else System.out.println("not anagram");
-            return (list.containsAll(list2) && list2.containsAll(list));
+            return (list.equals(list2));
       }
 
     }
