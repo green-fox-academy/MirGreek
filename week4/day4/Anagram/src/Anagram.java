@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 
 public class Anagram {
@@ -21,7 +22,8 @@ public class Anagram {
       for (int j = 0; j < string2.length(); j++) {
         list2.add(string1.charAt(j)) ;
         }
-
+      Arrays.sort(list.toArray());
+      Arrays.sort(list2.toArray());
          // if (list.containsAll(list2)){
            // System.out.println("anagram");
           //}else System.out.println("not anagram");
