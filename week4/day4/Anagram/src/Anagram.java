@@ -25,7 +25,7 @@ public class Anagram {
         }
         Collections.sort(list);
         Collections.sort(list2);
-      
+
          // if (list.containsAll(list2)){
            // System.out.println("anagram");
           //}else System.out.println("not anagram");

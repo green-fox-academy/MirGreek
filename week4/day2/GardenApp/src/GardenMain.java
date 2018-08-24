@@ -27,7 +27,7 @@ public class GardenMain {
     palm.waterLevel();
     oak.waterLevel();
 
-    
+
 
     for (int i = 0; i < garden1.garden.size(); i++) {
       System.out.println(garden1.garden.get(i).level);

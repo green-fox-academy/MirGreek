@@ -5,20 +5,19 @@ public class Pirate {
     boolean pirateDies = false;
     int chance = ((int)(Math.random() *10)/3);
 
-    System.out.println(howsItGoingMate(answer, drink, Boolean.parseBoolean("alive")));
+    System.out.println(howsItGoingMate(answer, drink,Boolean.parseBoolean("alive")));
 
     brawl(chance, pirateDies);
   }
-  public static String drinkSomeRum(String drink,boolean pirateDies){
+  public static void drinkSomeRum(String drink2,boolean pirateDies){
     if (pirateDies){
       die();
     }
-    return drink;
+    System.out.println(drink2);
 
   }
   public static String howsItGoingMate(String answer,String drink,boolean pirateDies){
     for (int i = 0; i <4 ; i++) {
-
       if (pirateDies){
         die();
       }
@@ -29,30 +28,25 @@ public class Pirate {
     return answer;
 
   }
-  public static String die(){
-    String death = "He's dead";
-    return death;
+  static void die(){
+    System.out.println("He's dead");
   }
 
 
-  static String brawl(int chance, boolean pirateDies){
+  static void brawl(int chance, boolean pirateDies){
+
     chance = ((int)(Math.random() *10)/3);
     if (pirateDies){
       die();
     }
       if (chance == 1){
-        return  "Pirate1 died :(";
+        System.out.println( "Pirate1 died :(");
       } else if (chance == 2){
-        return "Pirate2 died :(";
+        System.out.println("Pirate2 died :(");
       } else
-      return "Both survived";
+      System.out.println("Both survived");
     }
 
-
-    public static String parrot(){
-      System.out.println("paa");
-      return "paa";
-    }
 }
 /*
 drinkSomeRum() - intoxicates the Pirate some
