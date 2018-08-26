@@ -2,7 +2,7 @@ public class AirCraft {
   int maxAmmo;
   int baseDamage;
   int ammoStore;
-  String type;
+  String name;
 
 
   public void ammoTrack(){
@@ -13,7 +13,7 @@ public class AirCraft {
    int Damage = 0;
     ammoStore = 0;
     Damage = baseDamage * maxAmmo;
-    return "The demage this aircraft dealt is: " +  + Damage;
+    return "The demage of this aircraft is : " +  Damage;
  }
   public String refill(int fillWith){
     int filled = 0;
@@ -26,11 +26,26 @@ public class AirCraft {
     return "The ammo was filled with: " + fillWith + ", " + "the aircraft was filled up to: " + filled + ", " + " and the remainig is: " + (fillWith-filled);
   }
 
+  public String getType() {
+    return this.getClass().getName();
+    // this instanceof f16
+  }
 
+  public String getStatus(){
+    return "Type: " + getType() + ", Ammo: " + ammoStore + ", Base damage: " + baseDamage + ", " + fight();
+  }
 
  public AirCraft(int maxAmmo, int baseDamage,int ammoStore){
-    this.baseDamage=baseDamage;
+   super();
+   this.baseDamage=baseDamage;
     this.maxAmmo=maxAmmo;
     this.ammoStore= ammoStore;
 }
+public boolean isPriority(){
+    if(this.equals("F35")) {
+    return true;
+  } else return false;
+}
+
+
 }
