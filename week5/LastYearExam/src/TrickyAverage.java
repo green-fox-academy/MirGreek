@@ -5,7 +5,7 @@ public class TrickyAverage {
   public static void main(String[] args) {
     int[] array = {2, 3, 4, 5, 6, 7, 9, 10, 12};
     double average = 0.0;
-    System.out.println(getTrickyAvg(array, average));
+    getTrickyAvg(array, average);
 
   }
 
@@ -19,20 +19,19 @@ public class TrickyAverage {
       } else even.add(array[i]);
     }
 
-    int tempEven = 0;
+    double tempEven = 0.0;
     for (int k = 0; k <even.size() ; k++) {
           tempEven=even.get(k);
         }
 
-    int tempOdd = 0;
+    double tempOdd = 0.0;
     for (int i = odd.size()-1; i > -1 ; i--) {
          tempOdd = odd.get(i);
       }
-    average= tempEven/tempOdd;
+    average= tempOdd/tempEven;
     System.out.println(tempEven);
     System.out.println(tempOdd);
-    System.out.println(even);
-    System.out.println(odd);
+    System.out.println(average);
      return average;
 
   }
