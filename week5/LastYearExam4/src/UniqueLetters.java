@@ -5,12 +5,13 @@ import java.util.Set;
 public class UniqueLetters {
   public static void main(String[] args) {
     String aParameter = "elkáposztásítottalanítottátok";
-    uniqueCharacters(aParameter);
+    System.out.println(uniqueCharacters(aParameter));
 
   }
-  public static Set<Character> uniqueCharacters(String parameter){
+  public static ArrayList<Character> uniqueCharacters(String parameter){
     ArrayList<Character> uniqum =new ArrayList<>();
     HashMap<Character,Integer> uniqumNext = new HashMap<>();
+    ArrayList<Character> uniqueLetters =new ArrayList<>(uniqumNext.keySet());
 
     for (int i = 0; i < parameter.length(); i++) {
      char temp= parameter.charAt(i);
@@ -23,9 +24,11 @@ public class UniqueLetters {
         uniqumNext.put(letter,1);
       }
     }
-    System.out.println(uniqumNext.keySet());
 
-    return uniqumNext.keySet() ;
+    uniqueLetters.addAll(uniqumNext.keySet());
+
+
+    return uniqueLetters ;
   }
 
 }
