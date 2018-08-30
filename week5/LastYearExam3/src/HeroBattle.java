@@ -95,7 +95,7 @@ public class HeroBattle {
     for (BaseHero otherHero : otherHeroes) {
       if (otherHero != hero && otherHero instanceof Punchable) {
         hero.punch((Punchable) otherHero);
-        System.out.println(otherHeroes);
+        System.out.println(hero);
       }
     }
   }
