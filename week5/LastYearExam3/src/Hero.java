@@ -5,6 +5,15 @@ public class Hero extends BaseHero implements Punchable  {
 
 
 
+  @Override
+  public String toString() {
+    getMotivationLevel();
+    if (motivation == 0) {
+      return name + " is not motivated anymore";
+    } else if (motivation == 1){
+        return name + " is motivated";
+    } else return name + " is well motivated";
+  }
 
 
   public Hero(String name,int motivation) {
@@ -16,7 +25,8 @@ public class Hero extends BaseHero implements Punchable  {
   public void punch(Punchable other) {
    damage = motivation / 1.5;
    if (getMotivationLevel() >= 1 ){
-        other.bePunched(damage);                              //hero punches other heroes only if his/her motivation level is at least 1
+        other.bePunched(damage);
+        //hero punches other heroes only if his/her motivation level is at least 1
    }
   }
 

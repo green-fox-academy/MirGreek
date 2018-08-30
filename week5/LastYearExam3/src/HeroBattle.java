@@ -29,13 +29,14 @@ public class HeroBattle {
    *
    * - bePunched: suffer damage, calculated like:
    * - motivation = motivation - (damage / motivation)
-   * ITT TARTOK
+   *
    *
    * - toString: returns a string status report about the hero
    * - if the hero's motivation level is 0: {name} is not motivated anymore.
    * - if the hero's motivation level is 1: {name} is motivated.
    * - if the hero's motivation level is 2: {name} is well motivated.
    *
+   * ITT TARTOK
    * You will need also a DCHero and a MarvelHero classes. They extend the Hero class
    * with a restriction, they cannot punch other heroes from the same "Universe":
    * - A MarvelHero shouldn't be able to punch another MarvelHero
@@ -70,6 +71,7 @@ public class HeroBattle {
     while (anyHeroCanFight(heroes)) {
       for (BaseHero hero : heroes) {
         punchOtherHeroes(hero, heroes);
+
       }
     }
   }
@@ -93,6 +95,7 @@ public class HeroBattle {
     for (BaseHero otherHero : otherHeroes) {
       if (otherHero != hero && otherHero instanceof Punchable) {
         hero.punch((Punchable) otherHero);
+        System.out.println(otherHeroes);
       }
     }
   }
