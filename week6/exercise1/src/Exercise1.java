@@ -18,8 +18,12 @@ public class Exercise1 {
         .mapToDouble(n -> Math.pow(n,2))
         .forEach(System.out::println);
 
+    ArrayList<Integer> numbers2 = new ArrayList<>(Arrays.asList(3, 9, 2, 8, 6, 5));
 
-
+    numbers2.stream()
+        .mapToDouble(n -> Math.pow(n,2))
+        .filter(n -> n > 20)
+        .forEach(System.out::println);
 
 
 
