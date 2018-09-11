@@ -20,7 +20,7 @@ public class Main {
     garden.getStatus();
     garden.watering(40);
     garden.watering(70);
-
+    System.out.println(":)");
   }
 }
 /*
