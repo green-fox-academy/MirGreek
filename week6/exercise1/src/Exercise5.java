@@ -1,5 +1,9 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Exercise5 {
   public static void main(String[] args) {
+
     String myString = "thisIsAString";
 
     uppercase(myString);
@@ -12,5 +16,6 @@ public class Exercise5 {
         .forEach(System.out::println);
     return "";
   }
+
 
 }

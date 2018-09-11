@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 public class Exercise1 {
   public static void main(String[] args) {
@@ -25,6 +26,11 @@ public class Exercise1 {
         .filter(n -> n > 20)
         .forEach(System.out::println);
 
+    ArrayList<String> cities = new ArrayList<>(Arrays.asList("ROME", "LONDON", "NAIROBI", "CALIFORNIA", "ZURICH", "NEW DELHI", "AMSTERDAM", "ABU DHABI", "PARIS"));
+      cities.stream()
+          .filter(s -> s.endsWith("I"))
+          .filter(name -> name.startsWith("A"))
+          .forEach(System.out::println);
 
 
 
