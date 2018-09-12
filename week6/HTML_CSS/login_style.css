@@ -1,0 +1,65 @@
+
+form {
+    background-color: white;
+    margin:100px auto;
+    width:353px;
+    height: 303px;
+    padding:40px;
+}
+form, div {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+label {
+    font-size: 90%;
+}
+#forgot-password {
+    font-size: 70%;
+    text-align: center;
+    color:grey;
+}
+
+
+
+#username {
+    border-color: lightgreen;
+    
+
+}
+
+div + div{
+    margin-top: 30px;
+}
+input[type="text"] {
+    width: 212px;
+    border-radius: 3px;
+    height:30px;
+    background-color: whitesmoke;
+    
+    
+    
+}
+
+#login {
+    border-radius:30px;
+    color: white;
+    background-color: black;
+    width: 100px;
+    height: 50px;
+}
+body {
+    background-color: lightgrey;
+}
+
+#password {
+    background-image: url(img/eye.png);
+    color: black;
+}
+
+
+/*div {
+    position: relative;
+
+}
+div{
+    position: absolute;
+} */
