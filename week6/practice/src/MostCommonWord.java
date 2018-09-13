@@ -29,7 +29,6 @@ public class MostCommonWord {
     String textReplaced2 = textReplaced.replaceAll("[']", " ");
 
     String[] wordsList = textReplaced2.split(" ");
-    System.out.println(Arrays.toString(wordsList));
 
     HashMap<String, Integer> wordsMap = new HashMap<>();
 
@@ -39,10 +38,9 @@ public class MostCommonWord {
       } else
         wordsMap.put(word, wordsMap.get(word) + 1);
     }
-    System.out.println(wordsMap);
 
     int max = Collections.max(wordsMap.values());
-    System.out.println(max);
+
     for (Map.Entry<String, Integer> entry : wordsMap.entrySet()) {
       if (entry.getValue() == max) {
         return entry.getKey();
