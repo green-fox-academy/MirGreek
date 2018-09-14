@@ -6,14 +6,17 @@ public class Pirate {
   int drinkCount;
   boolean isAlive;
   String name;
+  String type;
 
-  public Pirate(String name) {
+  public Pirate(String name,String type) {
     this.drinkCount = 0;
     this.isDrunk = false;
     this.isAlive = true;
     this.name = name;
+    this.type = type;
 
   }
+
 
   public void drinkSomeRum() {
     if (isAlive = true) {
@@ -53,6 +56,12 @@ public class Pirate {
   public int chanceOfDying() {
     int random = (int) (Math.random() * 3);
     return random;
+  }
+  public void parrot(){
+    System.out.println("paa");
+  }
+  public String getStatus(){
+    return this.type;
   }
 
 

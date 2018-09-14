@@ -21,19 +21,18 @@ public class ReversedLines {
     List<String> lineList = getTextLines(filename);
     List<Character> characterReversed = new ArrayList<>();
 
-    for (int j = 0; j <lineList.size(); j++) {
+    for (int j = 0; j < lineList.size(); j++) {
       char[] charList = lineList.get(j).toCharArray();
-      for (int i = charList.length- 1; i >= 0; i--) {
-          characterReversed.add(charList[i]);
+      for (int i = charList.length - 1; i >= 0; i--) {
+        characterReversed.add(charList[i]);
       }
     }
-    String reversedText="";
-    reversedText= String.valueOf(characterReversed);
+
     StringBuilder builder = new StringBuilder();
     for (Character c : characterReversed) {
       builder.append(c);
     }
-    
+
     return builder.toString();
   }
 

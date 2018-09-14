@@ -1,4 +1,8 @@
-package PACKAGE_NAME;
+public class Captain extends Pirate {
+  String type;
 
-public class Captain {
+  public Captain(String name, String type) {
+    super(name, type);
+    this.type = "captain";
+  }
 }
