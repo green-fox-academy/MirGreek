@@ -5,6 +5,16 @@ public class BankAccount {
   long balance;
   String animalType;
 
+  public String getCurrency() {
+    return currency;
+  }
+
+  public void setCurrency(String currency) {
+    this.currency = currency;
+  }
+
+  String currency;
+
   public String getName() {
     return name;
   }
@@ -14,7 +24,7 @@ public class BankAccount {
   }
 
   public long getBalance() {
-    return balance;
+    return  balance ;
   }
 
   public void setBalance(long balance) {
@@ -30,10 +40,11 @@ public class BankAccount {
   }
 
 
-  public BankAccount(String name, long balance, String animalType) {
+  public BankAccount(String name, long balance, String animalType, String currency) {
     this.name = name;
     this.balance = balance;
     this.animalType = animalType;
+    this.currency = currency;
   }
 
 

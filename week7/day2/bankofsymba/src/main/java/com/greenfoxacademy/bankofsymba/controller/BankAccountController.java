@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BankAccountController {
   @RequestMapping(value = "/show")
   public String createBankAccount(Model model){
-    BankAccount bankAccount = new BankAccount("Simba", 2000, "lion");
+    BankAccount bankAccount = new BankAccount("Simba", 2000, "Lion","Zebra");
     model.addAttribute("bankaccount",bankAccount);
 
     return "bankaccount";
   }
+
 }

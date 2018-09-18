@@ -3,6 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${bankaccount.name}" > Welcome to your bank account page!</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
 </head>
 <body>
     <div>
@@ -12,18 +30,20 @@
 <div>
     <h2>
         <table>
+
             <th>Name</th>
             <th>Balance</th>
             <th>Animal Type</th>
             <tr>
-                <td th:text="${bankaccount.name}"></tdth:text></td>
-                <td th:text="${bankaccount.balance}"></td>
+                <td th:text="${bankaccount.name}"></td>
+                <td th:text="${#numbers.formatDecimal(bankaccount.balance,0,'POINT',2,'COMMA')+ ' Zebra'}"></td>
                 <td th:text="${bankaccount.animalType}"></td>
             </tr>
         </table>
 
     </h2>
 </div>
+<div><a href="/enjoy">Look at text</a></div>
 
 </body>
 </html>
