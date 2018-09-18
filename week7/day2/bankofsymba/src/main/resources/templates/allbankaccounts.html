@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="htttp//www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> Welcome</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+</head>
+<body>
+<div>
+
+
+</div>
+
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Balance</th>
+                <th>Animal Type</th>
+            </thead>
+            <tbody>
+            <tr th:each="oneaccount : ${accountslist}">
+                <td th:text="${oneaccount.name}"></td>
+                <td th:text="${oneaccount.balance}"></td>
+                <td th:text="${oneaccount.animalType}"></td>
+
+            </tr>
+            </tbody>
+        </table>
+
+</body>
+</html>
+
+

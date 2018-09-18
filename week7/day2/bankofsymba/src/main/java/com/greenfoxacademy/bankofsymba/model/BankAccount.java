@@ -40,11 +40,10 @@ public class BankAccount {
   }
 
 
-  public BankAccount(String name, long balance, String animalType, String currency) {
+  public BankAccount(String name, long balance, String animalType) {
     this.name = name;
     this.balance = balance;
     this.animalType = animalType;
-    this.currency = currency;
   }
 
 
