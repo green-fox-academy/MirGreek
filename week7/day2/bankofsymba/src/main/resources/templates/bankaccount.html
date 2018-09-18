@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="htttp//www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${bankaccount.name}" > Welcome to your bank account page!</title>
+</head>
+<body>
+    <div>
+        <h1 th:text="${bankaccount.name} + ', Welcome to your bank account page!'" ></h1>
+
+    </div>
+<div>
+    <h2>
+        <table>
+            <th>Name</th>
+            <th>Balance</th>
+            <th>Animal Type</th>
+            <tr>
+                <td th:text="${bankaccount.name}"></tdth:text></td>
+                <td th:text="${bankaccount.balance}"></td>
+                <td th:text="${bankaccount.animalType}"></td>
+            </tr>
+        </table>
+
+    </h2>
+</div>
+
+</body>
+</html>
