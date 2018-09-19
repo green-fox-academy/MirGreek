@@ -30,21 +30,31 @@
 
         <table>
             <thead>
+                <th>Id</th>
                 <th>Name</th>
                 <th>Balance</th>
                 <th>Animal Type</th>
+                <th>Is it a king?</th>
+                <th>Donate</th>
             </thead>
             <tbody>
             <tr th:each="oneaccount : ${accountslist}">
+                <td th:text="${oneaccountStat.count}"></td>
                 <td th:text="${oneaccount.name}"></td>
-                <td th:text="${oneaccount.balance}"></td>
+                <td th:text="${#numbers.formatDecimal(oneaccount.balance,0,'POINT',2,'COMMA')+ ' Zebra'}"></td>
                 <td th:text="${oneaccount.animalType}"></td>
-
+                <td th:text="${oneaccount.isKing}"></td>
+                <td><input type="submit" value="donate" name="submit-button" id="buttons"></td>
             </tr>
             </tbody>
-        </table>
+        </table><br>
+<form action="show" method="post">
+    <div>
+        <input type="submit" value="donate" id="submit-button" name="submit-button">
+    </div>
+</form>
+<div><a href="/show">go back</a></div>
 
 </body>
 </html>
-
 

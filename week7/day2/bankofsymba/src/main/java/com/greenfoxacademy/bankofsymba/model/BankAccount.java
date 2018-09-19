@@ -4,6 +4,7 @@ public class BankAccount {
   String name;
   long balance;
   String animalType;
+  public boolean isKing;
 
   public String getCurrency() {
     return currency;
@@ -32,6 +33,7 @@ public class BankAccount {
   }
 
   public String getAnimalType() {
+
     return animalType;
   }
 
@@ -39,11 +41,19 @@ public class BankAccount {
     this.animalType = animalType;
   }
 
+  public boolean getIsKing() {
+    return isKing;
+  }
+
+  public void setIsKing(boolean isKing) {
+    this.isKing = isKing;
+  }
 
   public BankAccount(String name, long balance, String animalType) {
     this.name = name;
     this.balance = balance;
     this.animalType = animalType;
+    this.isKing = false;
   }
 
 
