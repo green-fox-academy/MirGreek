@@ -3,9 +3,7 @@ package com.greenfoxacademy.bankofsymba.controller;
 import com.greenfoxacademy.bankofsymba.model.BankAccount;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -40,7 +38,6 @@ public class BankAccountController {
 
   @GetMapping("/showall")
   public String createNewBankAccounts(Model model) {
-
     for (BankAccount account : accountsList) {
       if (account.getAnimalType().equals("Lion")) {
         account.setIsKing(true);
@@ -52,18 +49,10 @@ public class BankAccountController {
 
 
 
-  @PostMapping("/showall")
-  public String donateAccounts(Model model){
-
-    for (BankAccount account : accountsList) {
-        if(account.getIsKing()){
-           account.setBalance(account.getBalance()+100);
-        } else {
-          account.setBalance(account.getBalance()+100);
-          }
-    }
-    model.addAttribute("accountslist", accountsList);
-
+  @RequestMapping(value="/donate", method= RequestMethod.POST)
+  public String donate(@RequestParam("add")int index){
+  accountsList.get(index).raiseBalace();
+  //createNewBankAccounts
     return "allbankaccounts";
   }
 

@@ -19,6 +19,40 @@
         tr:nth-child(even) {
             background-color: #dddddd;
         }
+        #buttons {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 10px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: deepskyblue;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 7px #999;
+        }
+        #buttons:hover {
+            background-color: cornflowerblue;
+            transition: all 100ms cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        #buttons:active {
+            background-color: darkblue;
+            box-shadow: 0 4px #666;
+            transform: translateY(4px);
+        }
+        #linkback {
+            background-color: deepskyblue;
+            color: white;
+            margin: 2px;
+            padding: 6px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 3px;
+            width: 70px;
+        }
     </style>
 
 </head>
@@ -44,16 +78,21 @@
                 <td th:text="${#numbers.formatDecimal(oneaccount.balance,0,'POINT',2,'COMMA')+ ' Zebra'}"></td>
                 <td th:text="${oneaccount.animalType}"></td>
                 <td th:text="${oneaccount.isKing}"></td>
-                <td><input type="submit" value="donate" name="submit-button" id="buttons"></td>
+                <td>
+                 <form method="post" action="/showall">
+                    <input type="submit" th:value="'donate ' + ${oneaccount.name}"  id="buttons">
+                     <input type="hidden" th:value="${oneaccountStat.index}" name="add">
+                 </form>
+                </td>
             </tr>
             </tbody>
         </table><br>
 <form action="show" method="post">
     <div>
-        <input type="submit" value="donate" id="submit-button" name="submit-button">
+        <input type="submit" value="form" id="submit-button" name="submit-button">
     </div>
 </form>
-<div><a href="/show">go back</a></div>
+<div id="linkback"><a href="/show">my Account</a></div>
 
 </body>
 </html>

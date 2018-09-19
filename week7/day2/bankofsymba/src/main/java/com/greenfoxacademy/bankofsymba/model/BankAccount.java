@@ -59,4 +59,11 @@ public class BankAccount {
 
   public BankAccount() {
   }
+  public void raiseBalace(){
+    if (getIsKing()) {
+     setBalance(getBalance() + 100);
+    } else {
+      setBalance(getBalance() + 10);
+    }
+  }
 }
