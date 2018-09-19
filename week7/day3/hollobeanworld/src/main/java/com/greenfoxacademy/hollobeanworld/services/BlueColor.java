@@ -1,9 +1,10 @@
 package com.greenfoxacademy.hollobeanworld.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 public class BlueColor implements MyColor {
   Printer printer;
 
