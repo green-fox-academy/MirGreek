@@ -49,16 +49,32 @@ public class BankAccountController {
 
 
 
-  @RequestMapping(value="/donate", method= RequestMethod.POST)
-  public String donate(@RequestParam(value="add")int index){
-  accountsList.get(index).raiseBalace();
+  //@RequestMapping(value="/donate", method= RequestMethod.POST)
+  //public String donate(@RequestParam(value="add")int index){
+  //accountsList.get(index).raiseBalace();
+    //return "redirect:/showall";
+  //}
+
+
+  @RequestMapping(value="/donate", method={RequestMethod.POST})
+  public String donateNumber(@RequestParam(value="index")int index,
+                             @RequestParam(value="number")long number){
+    accountsList.get(index).raiseBalanceWithMyNumber(number);
     return "redirect:/showall";
   }
 
+
+/*@PostMapping (value="/addaccount")
+public String addAccount(
+          @RequestParam(value = "name")String name,
+          @RequestParam(value = "type")String animalType,
+          @RequestParam(value = "balance")long balance){
+  accountsList.add(new BankAccount(name,balance,animalType));
+  return "redirect:/showall";
+  } */
 }
+
 /*
-Create a custom form with a button, which can raise the balance of any animal by 10
-If the selected animal is a King, the increment is 100
 Creating new Bank Accounts
 Add new row of input elements to our previously created template
 With the help of these elements make sure, that the user can add new BankAccounts to our List

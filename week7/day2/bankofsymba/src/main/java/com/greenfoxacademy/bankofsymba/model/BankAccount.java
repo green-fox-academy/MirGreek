@@ -67,4 +67,8 @@ public class BankAccount {
       setBalance(getBalance() + 10);
     }
   }
+
+  public void raiseBalanceWithMyNumber(long myNumber){
+    balance+=myNumber;
+  }
 }
