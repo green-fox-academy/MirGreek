@@ -87,16 +87,14 @@
                 </td>
             </tr>
 
-            <form method="post" action="/addaccount">
-                <input type="text" id="addname" name="name">
-                <input type="text" id="addbalance" name="balance">
-                <input type="text" id="addtype" name="type">
-            </form>
             </tbody>
         </table><br>
-<form action="show" method="post">
+<form action="/addaccount" method="post">
     <div>
-        <input type="submit" value="form" id="submit-button" name="submit-button">
+        <input type="submit" value="create account" id="submit-button">
+        <input type="text" id="addname" name="name">
+        <input type="text" id="addbalance" name="balance">
+        <input type="text" id="addtype" name="type">
     </div>
 </form>
 <div id="linkback"><a href="/show">my Account</a></div>

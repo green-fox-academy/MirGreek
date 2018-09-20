@@ -64,14 +64,14 @@ public class BankAccountController {
   }
 
 
-/*@PostMapping (value="/addaccount")
+@PostMapping (value="/addaccount")
 public String addAccount(
           @RequestParam(value = "name")String name,
           @RequestParam(value = "type")String animalType,
           @RequestParam(value = "balance")long balance){
   accountsList.add(new BankAccount(name,balance,animalType));
   return "redirect:/showall";
-  } */
+  }
 }
 
 /*
