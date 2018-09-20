@@ -50,10 +50,9 @@ public class BankAccountController {
 
 
   @RequestMapping(value="/donate", method= RequestMethod.POST)
-  public String donate(@RequestParam("add")int index){
+  public String donate(@RequestParam(value="add")int index){
   accountsList.get(index).raiseBalace();
-  //createNewBankAccounts
-    return "allbankaccounts";
+    return "redirect:/showall";
   }
 
 }

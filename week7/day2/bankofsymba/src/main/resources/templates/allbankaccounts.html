@@ -79,7 +79,7 @@
                 <td th:text="${oneaccount.animalType}"></td>
                 <td th:text="${oneaccount.isKing}"></td>
                 <td>
-                 <form method="post" action="/showall">
+                 <form method="post" action="/donate">
                     <input type="submit" th:value="'donate ' + ${oneaccount.name}"  id="buttons">
                      <input type="hidden" th:value="${oneaccountStat.index}" name="add">
                  </form>
