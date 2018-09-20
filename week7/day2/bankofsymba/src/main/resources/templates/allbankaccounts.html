@@ -53,6 +53,24 @@
             border-radius: 3px;
             width: 70px;
         }
+        #danate-field {
+            width: 50px;
+        }
+        #submit-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 10px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: deepskyblue;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 7px #999;
+
+        }
     </style>
 
 </head>
@@ -82,7 +100,7 @@
                     <form method="post" action="/donate">
                         <input type="submit" th:value="'donate ' + ${oneaccount.name}"  id="buttons">
                         <input type="hidden" th:value="${oneaccountStat.index}" name="index">
-                        <input type="text" name="number">
+                        <input type="text" name="number" placeholder= "number" id="danate-field" >
                     </form>
                 </td>
             </tr>
@@ -91,10 +109,10 @@
         </table><br>
 <form action="/addaccount" method="post">
     <div>
+        <input type="text" id="addname" name="name" placeholder="name">
+        <input type="text" id="addbalance" name="balance" placeholder="balance">
+        <input type="text" id="addtype" name="type" placeholder="animal type">
         <input type="submit" value="create account" id="submit-button">
-        <input type="text" id="addname" name="name">
-        <input type="text" id="addbalance" name="balance">
-        <input type="text" id="addtype" name="type">
     </div>
 </form>
 <div id="linkback"><a href="/show">my Account</a></div>
