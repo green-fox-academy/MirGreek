@@ -34,23 +34,11 @@ public class MainController {
         model.addAttribute("fox",fox);
         return "index";
     }
-    //@GetMapping("/")
-   // public String index(Model model,@RequestParam(value="name")String name){
-        //model.addAttribute("name",name);
-       // return "index";
-    //}
 
-    /*@RequestMapping(value = "/login", method=RequestMethod.GET)
-    public String renderLogin(Model model){
-        model.addAttribute("fox",new Fox());
-        return "login";
+    @RequestMapping(value="/nutritionstore")
+     public String nutritionStore(){
+
+        return "nutritionstore";
+
     }
-
-    @PostMapping(value="/login")
-     public String createFox(@ModelAttribute Fox fox, RedirectAttributes redir) {
-        foxes.addFox(fox);
-        redir.addAttribute("name",fox.getName());
-        return "redirect:/";
-     } */
-
 }
