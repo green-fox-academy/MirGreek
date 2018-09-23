@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http//www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title > Welcome</title>
+</head>
+<body>
+    <div>
+        <li><a href="index.hu">Information </a></li>
+    </div>
+    <div></div><br>
+    <div>
+        <img src="smiling_fox.jpg">
+    </div><br>
+    <div></div><br>
+    <div >
+        <h1 th:text="${name}+' is a fox, currently living on pizza and limonade.'"></h1>
+    </div>
+    <div>
+        <h1>Known tricks</h1>
+    </div>
+    <div>
+        <li>Write HTML</li>
+        <li>Code Java</li>
+    </div>
+    <div>
+        <a href="/">Login page</a>
+    </div>
+</body>
+</html>
