@@ -25,7 +25,7 @@ public class Fox {
     }
 
     public void setFood(String food) {
-        this.food = "pizza";
+        this.food = food;
     }
 
     public String getDrink() {
@@ -33,7 +33,7 @@ public class Fox {
     }
 
     public void setDrink(String drink) {
-        this.drink = "water";
+        this.drink = drink;
     }
 
     public int getNumTricks() {
@@ -50,9 +50,6 @@ public class Fox {
         this.name=name;
     }
 
-
-    public Fox() {
-    }
 
 
     public Fox(String name, String food, int numTricks) {

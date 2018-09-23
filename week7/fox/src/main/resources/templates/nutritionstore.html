@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Nutrition Store</title>
@@ -12,13 +12,10 @@
     <li>Trick Center</li>
     <li>Action History</li>
 </ul>
-    <form>
+    <form action="/nutritionstore" method="post" th:object="${fox}">
         <label for="food">Food</label>
         <select name="food" id="food">
-            <option value="carrot">Carrot</option>
-            <option value="porkolt">Pörkölt</option>
-            <option value="soup">Soup</option>
-            <option value="chicken">Chicken</option>
+            <option th:each="onefood: ${foods}" th:utext="${onefood}" value="${onefood}"></option>
         </select>
     <label for="drink">Drink</label>
     <select name="drink" id="drink">

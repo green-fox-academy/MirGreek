@@ -9,8 +9,33 @@ import java.util.List;
 @Component
 public class Foxservice {
 
+    List<String> drinks;
+    List<Fox> foxes;
+    List<String> foods;
 
-        List<Fox> foxes;
+    public Foxservice(List<String> foods, List<String> drinks) {
+        foods = new ArrayList<>();
+        drinks = new ArrayList<>();
+    }
+
+
+    public List<String> getFoods() {
+        return foods;
+    }
+
+    public void setFoods(List<String> foods) {
+        this.foods = foods;
+    }
+
+    public List<String> getDrinks() {
+        return drinks;
+    }
+
+    public void setDrinks(List<String> drinks) {
+        this.drinks = drinks;
+    }
+
+
 
         @Autowired
         public Foxservice(List<Fox> foxes) {
@@ -46,6 +71,37 @@ public class Foxservice {
             return null;
 
         }
+
+        public void foodList(){
+            foods.add("Carrot");
+            foods.add("Porkolt");
+            foods.add("Chicken");
+            foods.add("Salad");
+        }
+    public void drinkList(){
+        drinks.add("Cocoa");
+        drinks.add("Milk");
+        drinks.add("Palinka");
+        drinks.add("Tea");
+        }
+
+        public void setFood(Fox fox,String food){
+        for (String oneFood:foods) {
+            if(oneFood.equals(food)){
+                fox.setFood(food);
+            }
+        }
+    }
+    public void setDrink(Fox fox,String drink){
+        for (String oneFood:foods) {
+            if(oneFood.equals(drink)){
+                fox.setDrink(drink);
+            }
+        }
+    }
+
+
+
     }
 
 

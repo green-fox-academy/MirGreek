@@ -35,10 +35,6 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping(value="/nutritionstore")
-     public String nutritionStore(){
-
-        return "nutritionstore";
 
     }
-}
+
