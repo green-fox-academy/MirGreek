@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Component
+@Service
 public class Fox {
     String name;
     String food;
@@ -24,7 +25,7 @@ public class Fox {
     }
 
     public void setFood(String food) {
-        this.food = food;
+        this.food = "pizza";
     }
 
     public String getDrink() {
@@ -32,7 +33,7 @@ public class Fox {
     }
 
     public void setDrink(String drink) {
-        this.drink = drink;
+        this.drink = "water";
     }
 
     public int getNumTricks() {
@@ -54,10 +55,10 @@ public class Fox {
     }
 
 
-    public Fox(String name, String food, String drink, int numTricks) {
+    public Fox(String name, String food, int numTricks) {
         this.name = name;
-        this.food = food;
-        this.drink = drink;
+        this.food = "pizza";
+        this.drink = "water";
         this.numTricks = numTricks;
     }
 

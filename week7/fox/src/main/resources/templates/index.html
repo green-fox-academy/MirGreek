@@ -14,14 +14,17 @@
     </div><br>
     <div></div><br>
     <div >
-        <h1 th:text="${name}+' is a fox, currently living on pizza and limonade.'"></h1>
+        <h1 th:text="'This is ' + ${fox.name} + ' , currently living on ' + ${fox.getFood()} + ' and ' + ${fox.drink} + '. You know ' + ${fox.getNumTricks()} + ' tricks' "></h1>
     </div>
     <div>
         <h1>Known tricks</h1>
     </div>
-    <div>
+    <div th:object="${fox}">
+          <p th:if="*{getNumTricks()}==0">You know no tricks yet. Go, learn some!</p>
+        <ul th:unless="*{getNumTricks()}==0">
         <li>Write HTML</li>
         <li>Code Java</li>
+        </ul>
     </div>
     <div>
         <a href="/">Login page</a>

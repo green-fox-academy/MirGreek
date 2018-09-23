@@ -17,6 +17,7 @@ import java.util.Collections;
 public class MainController {
 
     private Foxservice foxes;
+
     @Autowired
     public MainController(Foxservice foxes) {
         this.foxes=foxes;
@@ -29,7 +30,8 @@ public class MainController {
 
     @PostMapping(value = "/login")
     public String postName(@RequestParam(value="name")String name, Model model){
-        model.addAttribute("name",name);
+        Fox fox = new Fox(name,"Kamo",0);
+        model.addAttribute("fox",fox);
         return "index";
     }
     //@GetMapping("/")

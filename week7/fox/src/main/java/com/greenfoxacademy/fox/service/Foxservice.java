@@ -30,7 +30,7 @@ public class Foxservice {
 
         public Fox createFox(String name){
             Fox fox = new Fox(name);
-            foxes.add(fox);
+            addFox(fox);
             return fox;
         }
         public void addFox(Fox fox){
