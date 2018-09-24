@@ -19,4 +19,11 @@ public class AnagramTest {
         Assert.assertEquals(true,Anagram.isAnagram(apple,banana));
         Assert.assertTrue(Anagram.isAnagram(apple,banana));
     }
+    @Test
+    public void TestIfAnagramCaseSensitive(){
+        String apple ="Apple";
+        String banana = "palpe";
+        Assert.assertEquals(true,Anagram.isAnagram(apple,banana));
+        Assert.assertTrue(Anagram.isAnagram(apple,banana));
+    }
 }
