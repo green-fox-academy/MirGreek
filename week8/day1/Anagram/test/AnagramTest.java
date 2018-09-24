@@ -26,4 +26,12 @@ public class AnagramTest {
         Assert.assertEquals(true,Anagram.isAnagram(apple,banana));
         Assert.assertTrue(Anagram.isAnagram(apple,banana));
     }
+
+    @Test
+    public void TestIfAnagramHasSpace(){
+        String apple ="Appl e";
+        String banana = "p alpe";
+        Assert.assertEquals(true,Anagram.isAnagram(apple,banana));
+        Assert.assertTrue(Anagram.isAnagram(apple,banana));
+    }
 }
