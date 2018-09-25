@@ -15,7 +15,7 @@
         <th>DONE</th>
         </thead>
         <thbody>
-        <tr th:each="onetodo: ${todolist}">
+        <tr th:each="onetodo: ${todolist}" th:if="${onetodo.done} ">
             <td th:text="${onetodo.id}"></td>
             <td th:text="${onetodo.title}"></td>
             <td th:text="${onetodo.isUrgent()} ? 'its urgent' : 'not urgent' "></td>
