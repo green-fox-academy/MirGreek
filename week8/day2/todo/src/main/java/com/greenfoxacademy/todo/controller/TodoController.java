@@ -37,8 +37,13 @@ public class TodoController {
     }
 
     @PostMapping(value={"/add"})
-   public String addAndPost(@RequestParam(value="additem")String addTodo){
+    public String addAndPost(@RequestParam(value="additem")String addTodo){
         todoRepository.save(new Todo(addTodo));
+        return "redirect:/todo/list";
+    }
+    @PostMapping(value="/{id}/delete")
+    public String deleteTodo(@PathVariable(value="delete")long id){
+        todoRepository.deleteById(id);
         return "redirect:/todo/list";
     }
 }

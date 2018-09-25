@@ -21,15 +21,20 @@
         <th>TITLE</th>
         <th>URGENT</th>
         <th>DONE</th>
+        <th>DELETE</th>
         </thead>
-        <thbody>
+        <tbody>
         <tr th:each="onetodo: ${todolist}">
             <td th:text="${onetodo.id}"></td>
             <td th:text="${onetodo.title}"></td>
-            <td th:text="${onetodo.isUrgent()} ? 'its urgent' : 'not urgent' "></td>
-            <td th:text="${onetodo.done}"></td>
+            <td th:symbol="${onetodo.isUrgent()} ? '☞' : '☺' "></td>
+            <td th:symbol="${onetodo.done} ? '✔' : '❑'"></td>
+            <form action="/{id}/delete" method="post">
+                <input type="hidden" name="delete" th:value="${onetodo.id}">
+                <input type="submit" name="delete" value="delete">
+            </form>
         </tr>
-        </thbody>
+        </tbody>
     </table>
     <a href="/todo/add/">ADD_ToDos</a>
 </body>
