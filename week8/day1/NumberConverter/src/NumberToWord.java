@@ -3,7 +3,7 @@ import java.util.*;
 public class NumberToWord
 
 {
-    public void pw(int n, String ch)
+    public static String pw(int n, String ch)
     {
         String one[] = {
 
@@ -21,6 +21,7 @@ public class NumberToWord
         if (n > 0)
             System.out.print(ch);
 
+        return ch;
     }
     public static void main(String[] args)
 

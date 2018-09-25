@@ -1,35 +1,37 @@
 package com.greenfoxacademy.todo.model;
 
-import org.springframework.data.annotation.Id;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-//@Entity
+@Entity //Spring knows that it is gonna be the database
 public class Todo {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String title;
     private boolean urgent;
-    private boolean  done;
+    private boolean done;
 
-    public Todo(long id, String title, boolean urgent, boolean done) {
-        this.id = id;
+
+
+    public Todo(String title) {
         this.title = title;
-        this.urgent = urgent;
-        this.done = done;
+        urgent=false;
+        done=false;
+    }
+
+    public Todo() {
     }
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;
