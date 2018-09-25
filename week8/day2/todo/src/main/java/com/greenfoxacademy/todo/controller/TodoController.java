@@ -26,8 +26,11 @@ public class TodoController {
 
     //@ResponseBody // returnben nem html nevet, hanem pl stringet
     @GetMapping(value = {"/", "/list"})
-    public String list(Model model) {
-        model.addAttribute("todolist",todoRepository.findAll());
+    public String list(Model model, @RequestParam(value="isActive", required = false)String active) {
+        if (active == null || active.equals("false")){
+            model.addAttribute("todolist",todoRepository.findAllByDoneFalse());
+        } else
+            model.addAttribute("todolist",todoRepository.findAll());
         return "todolist";
     }
 }
