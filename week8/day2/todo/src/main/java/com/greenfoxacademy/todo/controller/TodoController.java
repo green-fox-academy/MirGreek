@@ -5,10 +5,7 @@ import com.greenfoxacademy.todo.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -32,5 +29,16 @@ public class TodoController {
         } else
             model.addAttribute("todolist",todoRepository.findAll());
         return "todolist";
+    }
+
+    @GetMapping(value={"/add"})
+    public String addPage(){
+        return "addform";
+    }
+
+    @PostMapping(value={"/add"})
+   public String addAndPost(@RequestParam(value="additem")String addTodo){
+        todoRepository.save(new Todo(addTodo));
+        return "redirect:/todo/list";
     }
 }
