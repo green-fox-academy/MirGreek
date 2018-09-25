@@ -23,9 +23,11 @@ public class TodoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        todoRepository.save(new Todo("Start the day"));
-        todoRepository.save(new Todo("Finish H2 workshop1"));
-        todoRepository.save(new Todo("Finish JPA workshop2"));
-        todoRepository.save(new Todo("Create CRUD project"));
+        todoRepository.save(new Todo("daily task",true,false));
+        todoRepository.save(new Todo("make the bed",true,false));
+        todoRepository.save(new Todo("do the washing up",false,false));
+        todoRepository.save(new Todo("walk the dog",true,true));
+        todoRepository.save(new Todo("go for a run",false,false));
+        todoRepository.save(new Todo("do some cookie",true,true));
     }
 }

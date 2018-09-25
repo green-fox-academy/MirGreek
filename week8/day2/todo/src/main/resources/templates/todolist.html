@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
+     <link rel="stylesheet" th:href="@{/Style.css}">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
     <h1>Todos for today: </h1>
-    <h1 th:each="onetodo: ${todolist}">
-        <li th:text="${onetodo.title}"></li>
-    </h1>
+    <table>
+        <thead>
+        <th>ID</th>
+        <th>TITLE</th>
+        <th>URGENT</th>
+        <th>DONE</th>
+        </thead>
+        <thbody>
+        <tr th:each="onetodo: ${todolist}">
+            <td th:text="${onetodo.id}"></td>
+            <td th:text="${onetodo.title}"></td>
+            <td th:text="${onetodo.urgent}"></td>
+            <td th:text="${onetodo.done}"></td>
+        </tr>
+        </thbody>
+    </table>
 </body>
 </html>
