@@ -41,9 +41,25 @@ public class TodoController {
         todoRepository.save(new Todo(addTodo));
         return "redirect:/todo/list";
     }
-    @PostMapping(value="/todo/delete")
-    public String deleteTodo(@PathVariable(value="delete")long id){
+    @PostMapping(value="/delete")
+    public String deleteTodo(@ModelAttribute(value="delete")long id){
         todoRepository.deleteById(id);
+        return "redirect:/todo/list";
+    }
+    @GetMapping(value="/{id}/edit")
+    public String editPage(){
+        return "edit";
+    }
+    @PostMapping(value = "/{id}/edit")
+    public String editTodo(@PathVariable (value="id")long id,
+                           @RequestParam(value = "title")String title,
+                           @RequestParam (value = "urgent")Boolean urgent,
+                           @RequestParam(value = "done")Boolean done) {
+            Todo todo = todoRepository.findById(id);
+            todo.setTitle(title);
+            todo.setUrgent(urgent);
+            todo.setDone(done);
+        todoRepository.save(todo);
         return "redirect:/todo/list";
     }
 }

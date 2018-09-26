@@ -16,18 +16,6 @@ public class Todo {
     private String title;
     private boolean urgent;
     private boolean done;
-    private String delete;
-
-    public String getDelete() {
-        return delete;
-    }
-
-    public void setDelete(String delete) {
-        this.delete = delete;
-    }
-
-
-
 
 
     public Todo(String title) {
