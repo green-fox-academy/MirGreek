@@ -1,0 +1,16 @@
+form {
+    background-color: white;
+    margin:150px auto;
+    width:353px;
+    height: 300px;
+    padding:40px;
+    border-radius:3px;
+}
+body {
+    background-color: darkgrey;
+}
+.title {
+    color:lightgreen;
+    border-radius: 2px;
+
+}

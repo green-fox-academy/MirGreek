@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
-     <link rel="stylesheet" th:href="@{/Style.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" th:href="@{/Style.css}">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>My ToDos</title>
 </head>
 <body>
     <div>
-        <a href="/todo/list/">ToDos</a>
+        <a href="/todo/list/">ToDos</a><br>
     </div>
     <div></div>
     <div>
@@ -15,34 +22,44 @@
     </div>
 
     <h1>Todos for today: </h1>
-    <table>
+    <table class="table table-hover">
         <thead>
-        <th>ID</th>
-        <th>TITLE</th>
-        <th>URGENT</th>
-        <th>DONE</th>
-        <th>DELETE</th>
-        <th>EDIT</th>
+            <th>ID</th>
+            <th>TITLE</th>
+            <th>URGENT</th>
+            <th>DONE</th>
+            <th>DELETE</th>
+            <th>EDIT</th>
         </thead>
         <tbody>
         <tr th:each="onetodo: ${todolist}" th:object="${onetodo}">
             <td th:text="${onetodo.id}"></td>
             <td th:text="${onetodo.title}"></td>
-            <td th:text="${onetodo.isUrgent()} ? '!!!' : 'not urgent' "></td>
-            <td th:text="${onetodo.done} ? 'done' : 'todo'"></td>
+            <div th:switch="*{urgent}">
+                <td th:case="true"><span class="glyphicon glyphicon-time"></span></td>
+                <td th:case="false"><span class="glyphicon glyphicon-heart"></span></td>
+            </div>
+
+            <div th:switch="*{done}">
+                <td th:case="true"><span class="glyphicon glyphicon-ok"></span></td>
+                <td th:case="false"><span class="glyphicon glyphicon-remove"></span></td>
+            </div>
             <td><form action="/todo/delete" method="post">
-                    <input type="hidden" name="delete" th:value="${onetodo.id}">
-                    <input type="submit" name="delete" value="Delete this todo">
+                    <input type="hidden" name="delete" th:value="${onetodo.id}" >
+                    <input type="submit" name="delete" value="Delete this todo" class="btn btn-primary">
                 </form>
             </td>
             <td>
                 <form th:action="@{'/todo/' + ${onetodo.id}+ '/edit'}" method="get">
-                    <input type="submit" value="Edit this todo">
+                    <input type="submit" value="Edit this todo"  class="btn btn-info">
                 </form>
             </td>
         </tr>
         </tbody>
     </table>
     <a href="/todo/add/">ADD_ToDos</a>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>

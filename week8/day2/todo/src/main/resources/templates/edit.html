@@ -1,17 +1,36 @@
 <!DOCTYPE html>
 <html lang="en"  xmlns:th="http://thymeleaf.org">
 <head>
+    <link rel="stylesheet" th:href="@{/StyleEdit.css}">
     <meta charset="UTF-8">
     <title>EDIT</title>
 </head>
 <body>
-    <form method="post" th:object="${editTodo}">
-        <input type="text" th:field="*{title}"  >
-        <label for="urgent">Urgent</label>
-        <input type="checkbox" id="urgent" th:field="*{urgent}">
-        <label for="done">Done</label>
-        <input type="checkbox" id="done" th:field="*{done}">
-        <input type="submit" value="edit">
-    </form>
+    <div class="form-group has-success has-feedback" >
+
+        <div class="form">
+        <form method="post" th:object="${editTodo}" >
+            <span>Add a new todo</span><br>
+            <div></div><br>
+            <div class="title">
+                <input type="text" th:field="*{title}" placeholder="todo" id="todo"><br>
+            </div>
+            <div  class="urgent">
+                <label for="urgent" >Urgent</label>
+                <input type="checkbox" id="urgent" th:field="*{urgent}"><br>
+            </div>
+            <div class="done">
+                <label for="done">Done</label>
+                <input type="checkbox" id="done" th:field="*{done}"><br>
+            </div>
+            <div class="submit">
+                <input type="submit" value="edit">
+            </div>
+        </form>
+         </div>
+    <div>
+        <a href="/todo/list">Cancel</a>
+    </div>
+    </div>
 </body>
 </html>
