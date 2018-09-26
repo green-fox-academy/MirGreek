@@ -31,12 +31,12 @@ public class TodoController {
         return "todolist";
     }
 
-    @GetMapping(value={"/add"})
-    public String addPage(){
-        return "addform";
-    }
+    //@GetMapping(value={"/add"})
+    //public String addPage(){
+      //  return "addform";
+    //}
 
-    @PostMapping(value={"/add"})
+    @PostMapping(value={"/"})
     public String addAndPost(@RequestParam(value="additem")String addTodo){
         if (addTodo!="")
         todoRepository.save(new Todo(addTodo));

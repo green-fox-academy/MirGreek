@@ -44,7 +44,7 @@ tr:nth-child(odd) {
     background-color: whitesmoke;
     color: black;
     border: solid 2px lightblue;
-    display: inline-block;
+    display: none;
     position: fixed;
     padding-top: 40px;
     top: 25%;
@@ -106,3 +106,20 @@ body {
     width: 214px;
     border-radius: 3px;
 }
+.urgent-div .urgent-div-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.urgent-div:hover .urgent-div-text {
+    visibility: visible;
+}
+
