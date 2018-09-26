@@ -9,7 +9,7 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <link rel="stylesheet" th:href="@{/Style.css}">
-    <script th:src="@{script.js}"></script>
+    <!--script th:src="@{script.js}"></script-->
     <meta charset="UTF-8">
     <title>My ToDos</title>
 </head>
@@ -58,24 +58,38 @@
         </tr>
         </tbody>
     </table>
-    <div class="add-form">
+    <div class="add-form" id="add-form">
         <div>
-            <form action="/todo/add" method="post">
+            <form method="post" action="/todo/add"  >
                 <div class="form-elements">
                     <span>Here you can add a new todo</span><br>
-                    <input type="text" id="addname" name="additem" placeholder="add todo" class="todo-title" autofocus><br>
+                    <input type="text" id="todo-title" name="additem" placeholder="add todo" class="todo-title" autofocus><br>
                     <button type="submit" value="create account" id="submit-button" class="submit-button">add</button>
-                    <a class="cancel-form">Cancel</a>
+                    <a class="cancel-form" id="cancel-form">Cancel</a>
                 </div>
 
             </form>
 
         </div>
     </div>
-    <a href="#" class="add-todo">ADD ToDos</a>
+    <button class="add-todo" id="add-todo">ADD ToDos</button>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
+<script type="text/javascript">
+    var addForm = document.getElementById('add-form');
+    var cancelButton = document.getElementById('cancel-form');
+    var addButton = document.getElementById('add-todo');
+
+    cancelButton.addEventListener('click', function() {
+        addForm.style.display = 'none'
+    })
+
+    addButton.addEventListener('click', function() {
+        addForm.style.display = 'inline-block'
+    })
+</script>
+
 </body>
 </html>

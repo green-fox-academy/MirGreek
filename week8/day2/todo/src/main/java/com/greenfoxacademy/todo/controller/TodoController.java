@@ -36,10 +36,10 @@ public class TodoController {
       //  return "addform";
     //}
 
-    @PostMapping(value={"/"})
+    @PostMapping(value={"/add"})
     public String addAndPost(@RequestParam(value="additem")String addTodo){
         if (addTodo!="")
-        todoRepository.save(new Todo(addTodo));
+            todoRepository.save(new Todo(addTodo));
         return "redirect:/todo/list";
     }
     @PostMapping(value="/delete")
