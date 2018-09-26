@@ -5,8 +5,12 @@
     <title>EDIT</title>
 </head>
 <body>
-    <form method="post">
-        <input type="text" name="title" >
+    <form method="post" th:object="${editTodo}">
+        <input type="text" name="title"  >
+        <label for="urgent">Urgent</label>
+        <input type="checkbox" id="urgent" name="urgent">
+        <label for="done">Done</label>
+        <input type="checkbox" id="done" name="done">
         <input type="submit" value="edit">
     </form>
 </body>
