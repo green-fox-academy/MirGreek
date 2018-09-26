@@ -12,8 +12,8 @@
         <form method="post" th:object="${editTodo}" >
             <span>Add a new todo</span><br>
             <div></div><br>
-            <div class="title">
-                <input type="text" th:field="*{title}" placeholder="todo" id="todo"><br>
+            <div>
+                <input type="text" th:field="*{title}" placeholder="todo" id="todo" class="title" autofocus><br>
             </div>
             <div  class="urgent">
                 <label for="urgent" >Urgent</label>

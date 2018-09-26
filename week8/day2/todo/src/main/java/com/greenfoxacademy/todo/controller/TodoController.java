@@ -38,6 +38,7 @@ public class TodoController {
 
     @PostMapping(value={"/add"})
     public String addAndPost(@RequestParam(value="additem")String addTodo){
+        if (addTodo!="")
         todoRepository.save(new Todo(addTodo));
         return "redirect:/todo/list";
     }

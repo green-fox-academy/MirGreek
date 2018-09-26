@@ -7,10 +7,14 @@ form {
     border-radius:3px;
 }
 body {
-    background-color: darkgrey;
+    background-color: lightgrey;
+    font-size: 20px;
+    font-family: "DejaVu Sans";
 }
 .title {
-    color:lightgreen;
+    border: solid 1px lightgreen;
     border-radius: 2px;
-
+}
+.title:focus {
+    border: lightseagreen solid 2px;
 }

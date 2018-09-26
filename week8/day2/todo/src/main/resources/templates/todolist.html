@@ -57,9 +57,24 @@
         </tr>
         </tbody>
     </table>
-    <a href="/todo/add/">ADD_ToDos</a>
+    <div class="add-form">
+        <div>
+            <form action="/todo/add" method="post">
+                <div class="form-elements">
+                    <span>Here you can add a new todo</span><br>
+                    <input type="text" id="addname" name="additem" placeholder="add todo" class="todo-title" autofocus><br>
+                    <button type="submit" value="create account" id="submit-button" class="submit-button">add</button>
+                    <a class="cancel-form">Cancel</a>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+    <a href="/todo/add/">ADD ToDos</a>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 </body>
 </html>
