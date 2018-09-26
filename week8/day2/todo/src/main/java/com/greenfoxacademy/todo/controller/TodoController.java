@@ -47,16 +47,17 @@ public class TodoController {
         return "redirect:/todo/list";
     }
     @GetMapping(value="/{id}/edit")
-    public String editPage(){
+    public String editPage(@PathVariable(value="id")long id, Model model){
+        model.addAttribute("editTodo",todoRepository.findById(id));
         return "edit";
     }
     @PostMapping(value = "/{id}/edit")
     public String editTodo(@PathVariable (value="id")long id,Model model,
-                           //@ModelAttribute(value="editTodo")Todo todo,
+                           @ModelAttribute(value="editTodo")Todo todo,
                            @RequestParam(value = "title")String title,
                            @RequestParam (value = "urgent",required = false)boolean urgent,
                            @RequestParam(value = "done",required = false)boolean done) {
-           Todo todo = todoRepository.findById(id);
+            todo = todoRepository.findById(id);
             todo.setTitle(title);
             todo.setUrgent(urgent);
             todo.setDone(done);

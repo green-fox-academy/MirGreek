@@ -6,11 +6,11 @@
 </head>
 <body>
     <form method="post" th:object="${editTodo}">
-        <input type="text" name="title"  >
+        <input type="text" th:field="*{title}"  >
         <label for="urgent">Urgent</label>
-        <input type="checkbox" id="urgent" name="urgent">
+        <input type="checkbox" id="urgent" th:field="*{urgent}">
         <label for="done">Done</label>
-        <input type="checkbox" id="done" name="done">
+        <input type="checkbox" id="done" th:field="*{done}">
         <input type="submit" value="edit">
     </form>
 </body>
