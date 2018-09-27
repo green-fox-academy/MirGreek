@@ -40,14 +40,14 @@ tr:nth-child(odd) {
     background-color: #ffffff;
 }
 
-.add-form div {
-    background-color: whitesmoke;
+.add-form {
+    background-color: white;
     color: black;
-    border: solid 2px lightblue;
-    display: inline-block;
+    border: solid 2px black;
+    display: none;
     position: fixed;
     padding-top: 40px;
-    top: 25%;
+    top: 15%;
     left: 35%;
     border-radius: 4px;
     width:500px;
