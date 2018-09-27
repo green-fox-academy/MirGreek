@@ -23,6 +23,23 @@
     </div>
 
     <h1>Todos for today: </h1>
+
+    <!--div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <form action="/todo/search" method="get">
+                    <input type="text" name="title" class="form-control" placeholder="Search for todo">
+                    <button class="btn btn-default" type="button" name="title">Go!</button>
+                </form>
+            </div>
+        </div>
+    </div-->
+
+    <form method="get" action="/todo/search" >
+        <input type="text" name="title">
+        <input type="submit">
+    </form>
+
     <table class="table table-hover">
         <thead>
             <th>ID</th>
@@ -37,12 +54,12 @@
             <td th:text="${onetodo.id}"></td>
             <td th:text="${onetodo.title}"></td>
             <div th:switch="*{urgent}" class="urgent-div"><span class="urgent-div-text">This is URGENT, dude!</span>
-                <td th:case="true"><span class="glyphicon glyphicon-time"></span></td>
-                <td th:case="false"><span class="glyphicon glyphicon-heart"></span></td>
+                <td th:case="true"><span class="glyphicon glyphicon-time" style="color: blue"></span></td>
+                <td th:case="false"><span class="glyphicon glyphicon-heart" style="color: lightskyblue"></span></td>
             </div>
 
             <div th:switch="*{done}">
-                <td th:case="true"><span class="glyphicon glyphicon-ok"></span></td>
+                <td th:case="true"><span class="glyphicon glyphicon-ok" style="color: lawngreen"></span></td>
                 <td th:case="false"><span class="glyphicon glyphicon-remove"></span></td>
             </div>
             <td><form action="/todo/delete" method="post">

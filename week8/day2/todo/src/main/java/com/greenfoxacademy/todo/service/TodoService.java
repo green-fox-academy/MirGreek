@@ -1,4 +1,5 @@
 package com.greenfoxacademy.todo.service;
 
-public class TodoService {
+public interface TodoService {
+
 }

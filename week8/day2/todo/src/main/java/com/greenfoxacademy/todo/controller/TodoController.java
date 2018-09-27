@@ -28,7 +28,7 @@ public class TodoController {
             model.addAttribute("todolist",todoRepository.findAllByDoneFalse());
         } else
             model.addAttribute("todolist",todoRepository.findAll());
-        return "todolist";
+        return "index";
     }
 
     //@GetMapping(value={"/add"})
@@ -64,5 +64,14 @@ public class TodoController {
             todo.setDone(done);
         model.addAttribute("editTodo",todoRepository.save(todo));
         return "redirect:/todo/list";
+    }
+
+
+
+
+    @GetMapping(value="/search")
+    public String findTodo(@RequestParam (value="title")String title, Model model){
+               model.addAttribute("todolist", todoRepository.findByTitle(title));
+        return "index";
     }
 }
