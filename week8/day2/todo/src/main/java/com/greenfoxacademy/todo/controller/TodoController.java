@@ -16,7 +16,7 @@ public class TodoController {
 
     private TodoRepository todoRepository;
     private PersonRepository personRepository;
-
+    private Person loggedInPerson;
 
 
 
@@ -33,15 +33,13 @@ public class TodoController {
     public String list(Model model, @RequestParam(value="isActive", required = false)String active) {
         if (active == null || active.equals("false")){
             model.addAttribute("todolist",todoRepository.findAllByDoneFalse());
+            model.addAttribute("person",loggedInPerson);
         } else
             model.addAttribute("todolist",todoRepository.findAll());
+            model.addAttribute("person",loggedInPerson);
         return "index";
     }
 
-    //@GetMapping(value={"/add"})
-    //public String addPage(){
-      //  return "addform";
-    //}
 
     @PostMapping(value={"/add"})
     public String addAndPost(@RequestParam(value="additem")String addTodo){
@@ -57,6 +55,7 @@ public class TodoController {
     @GetMapping(value="/{id}/edit")
     public String editPage(@PathVariable(value="id")long id, Model model){
         model.addAttribute("editTodo",todoRepository.findById(id));
+        model.addAttribute("person",loggedInPerson);
         return "edit";
     }
     @PostMapping(value = "/{id}/edit")
@@ -65,10 +64,10 @@ public class TodoController {
                            @RequestParam(value = "title")String title,
                            @RequestParam (value = "urgent",required = false)boolean urgent,
                            @RequestParam(value = "done",required = false)boolean done) {
-            todo = todoRepository.findById(id);
-            todo.setTitle(title);
-            todo.setUrgent(urgent);
-            todo.setDone(done);
+        todo = todoRepository.findById(id);
+        todo.setTitle(title);
+        todo.setUrgent(urgent);
+        todo.setDone(done);
         model.addAttribute("editTodo",todoRepository.save(todo));
         return "redirect:/todo/list";
     }
@@ -80,8 +79,9 @@ public class TodoController {
     public String findTodo(@RequestParam (value="title")String title, Model model) {
         if (title != "") {
             model.addAttribute("todolist", todoRepository.findByTitleContains(title));
+            model.addAttribute("person",loggedInPerson);
             return "index";
-        } else {
+        } else { model.addAttribute("person",loggedInPerson);
             return "index";
         }
     }
@@ -93,6 +93,7 @@ public class TodoController {
     public String givePerson(@ModelAttribute(value = "name")String name,Model model,
                              @ModelAttribute(value = "password")String password){
         Person person = new Person(name, password);
+        loggedInPerson = person;
         //model.addAttribute("name",person);
         model.addAttribute("person",personRepository.save(person));
         model.addAttribute("todolist",todoRepository.findAll());

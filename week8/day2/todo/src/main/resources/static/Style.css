@@ -52,16 +52,9 @@ tr:nth-child(odd) {
     border-radius: 4px;
     width:500px;
     height:400px;
-
-}
-.mask {
     z-index: 1;
-    background-color: rgba(0,0,0,0.1);
-    height: 500px;
-    width: 100%;
-
+    text-align: start;
 }
-
 
 
 button, a {
@@ -109,7 +102,7 @@ body {
     transition-duration: .6s;
     transition-timing-function: ease;
     padding: 10px;
-    margin: 0px;
+    background-color: whitesmoke;
 }
 .form-elements {
     padding: 120px;
@@ -137,4 +130,24 @@ body {
 
 .title-of-page {
     text-align: center;
+}
+#image {
+    width: 120px;
+    height: 120px;
+    align-content: center;
+    border-radius: 10px;
+}
+.login-form {
+    background-color: white;
+    color: black;
+    border: solid 2px black;
+    display: none;
+    position: fixed;
+    padding-top: 40px;
+    top: 15%;
+    left: 35%;
+    border-radius: 4px;
+    width:500px;
+    height:400px;
+    text-align: start;
 }
