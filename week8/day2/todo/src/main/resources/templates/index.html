@@ -9,7 +9,7 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <link rel="stylesheet" th:href="@{/Style.css}">
-    <!--script th:src="@{script.js}"></script-->
+    <script th:src="@{script.js}"></script>
     <meta charset="UTF-8">
     <title>My ToDos</title>
 </head>
@@ -22,22 +22,11 @@
         <a href="/todo/list/?isActive=true">AllToDos</a>
     </div>
 
-    <h1>Todos for today: </h1>
-
-    <!--div class="row">
-        <div class="col-lg-6">
-            <div class="input-group">
-                <form action="/todo/search" method="get">
-                    <input type="text" name="title" class="form-control" placeholder="Search for todo">
-                    <button class="btn btn-default" type="button" name="title">Go!</button>
-                </form>
-            </div>
-        </div>
-    </div-->
+    <div th:text="'Welcome ' + ${person.name} + ', these are your todos:'" class="title-of-page"></div>
 
     <form method="get" action="/todo/search" >
         <input type="text" name="title">
-        <input type="submit">
+        <button type="submit">search</button>
     </form>
 
     <table class="table table-hover">
@@ -75,8 +64,8 @@
         </tr>
         </tbody>
     </table>
-    <div class="add-form" id="add-form">
-        <div>
+    <div class="mask" id="mask">
+        <div class="add-form" id="add-form">
             <form method="post" action="/todo/add">
                 <div class="form-elements">
                     <span>Here you can add a new todo</span><br>
@@ -98,13 +87,17 @@
     var addForm = document.getElementById('add-form');
     var cancelButton = document.getElementById('cancel-form');
     var addButton = document.getElementById('add-todo');
+    var formMask = document.getElementById('mask')
 
     cancelButton.addEventListener('click', function() {
         addForm.style.display = 'none'
+        formMask.style.display = 'none'
     })
 
     addButton.addEventListener('click', function() {
         addForm.style.display = 'inline-block'
+        formMask.style.display = 'inline-block'
+
     })
 </script>
 

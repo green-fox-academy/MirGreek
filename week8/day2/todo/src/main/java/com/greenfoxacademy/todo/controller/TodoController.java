@@ -1,6 +1,8 @@
 package com.greenfoxacademy.todo.controller;
 
+import com.greenfoxacademy.todo.model.Person;
 import com.greenfoxacademy.todo.model.Todo;
+import com.greenfoxacademy.todo.repository.PersonRepository;
 import com.greenfoxacademy.todo.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,10 +15,15 @@ import org.springframework.web.bind.annotation.*;
 public class TodoController {
 
     private TodoRepository todoRepository;
+    private PersonRepository personRepository;
+
+
+
 
     @Autowired
-    public TodoController(TodoRepository todoRepository) {
+    public TodoController(TodoRepository todoRepository,PersonRepository personRepository) {
         this.todoRepository = todoRepository;
+        this.personRepository = personRepository;
     }
 
 
@@ -70,8 +77,25 @@ public class TodoController {
 
 
     @GetMapping(value="/search")
-    public String findTodo(@RequestParam (value="title")String title, Model model){
-               model.addAttribute("todolist", todoRepository.findByTitle(title));
+    public String findTodo(@RequestParam (value="title")String title, Model model) {
+        if (title != "") {
+            model.addAttribute("todolist", todoRepository.findByTitleContains(title));
+            return "index";
+        } else {
+            return "index";
+        }
+    }
+    @GetMapping(value="/login")
+    public String loginPage(){
+        return "login";
+    }
+    @PostMapping(value="/login")
+    public String givePerson(@ModelAttribute(value = "name")String name,Model model,
+                             @ModelAttribute(value = "password")String password){
+        Person person = new Person(name, password);
+        //model.addAttribute("name",person);
+        model.addAttribute("person",personRepository.save(person));
+        model.addAttribute("todolist",todoRepository.findAll());
         return "index";
     }
 }

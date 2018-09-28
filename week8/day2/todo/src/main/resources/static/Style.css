@@ -52,7 +52,18 @@ tr:nth-child(odd) {
     border-radius: 4px;
     width:500px;
     height:400px;
+
 }
+.mask {
+    z-index: 1;
+    background-color: rgba(0,0,0,0.1);
+    height: 500px;
+    width: 100%;
+
+}
+
+
+
 button, a {
     color: #427388;
     cursor: pointer;
@@ -98,6 +109,7 @@ body {
     transition-duration: .6s;
     transition-timing-function: ease;
     padding: 10px;
+    margin: 0px;
 }
 .form-elements {
     padding: 120px;
@@ -123,3 +135,6 @@ body {
     visibility: visible;
 }
 
+.title-of-page {
+    text-align: center;
+}

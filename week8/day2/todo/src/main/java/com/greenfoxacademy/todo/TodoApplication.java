@@ -1,7 +1,9 @@
 package com.greenfoxacademy.todo;
 
 
+import com.greenfoxacademy.todo.model.Person;
 import com.greenfoxacademy.todo.model.Todo;
+import com.greenfoxacademy.todo.repository.PersonRepository;
 import com.greenfoxacademy.todo.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TodoApplication implements CommandLineRunner {
 
     private TodoRepository todoRepository;
+    private PersonRepository personRepository;
 
     @Autowired
     public TodoApplication(TodoRepository todoRepository) {
@@ -29,5 +32,9 @@ public class TodoApplication implements CommandLineRunner {
         todoRepository.save(new Todo("walk the dog",true,true));
         todoRepository.save(new Todo("go for a run",false,false));
         todoRepository.save(new Todo("do some cookie",true,true));
+    }
+    public void addTodoToPerson(){
+        personRepository.save(new Person());
+
     }
 }

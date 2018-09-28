@@ -2,10 +2,7 @@ package com.greenfoxacademy.todo.model;
 
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity //Spring knows that it is gonna be the database
 public class Todo {
@@ -16,6 +13,8 @@ public class Todo {
     private String title;
     private boolean urgent;
     private boolean done;
+    @ManyToOne
+    private Person owner;
 
 
 
@@ -66,5 +65,14 @@ public class Todo {
         if(this.getTitle().equals(title)){
             return true;
         }else return false;
+    }
+
+    public Person getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Person owner) {
+        this.owner = owner;
+        owner.giveTodo(this);
     }
 }
