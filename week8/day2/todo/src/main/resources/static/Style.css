@@ -160,7 +160,7 @@ body {
     box-sizing: border-box;
 }
 .mask {
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0,0,0,0.2);
     position:fixed;
     height:5000px;
     width: 98.8%;

@@ -45,12 +45,12 @@ public class TodoController {
     public String addAndPost(@RequestParam(value="additem")String addTodo){
         if (addTodo!="")
             todoRepository.save(new Todo(addTodo));
-        return "redirect:/todo/list";
+        return "redirect:/todo/list/?isActive=true";
     }
     @PostMapping(value="/delete")
     public String deleteTodo(@ModelAttribute(value="delete")long id){
         todoRepository.deleteById(id);
-        return "redirect:/todo/list";
+        return "redirect:/todo/list/?isActive=true";
     }
     @GetMapping(value="/{id}/edit")
     public String editPage(@PathVariable(value="id")long id, Model model){
@@ -69,7 +69,7 @@ public class TodoController {
         todo.setUrgent(urgent);
         todo.setDone(done);
         model.addAttribute("editTodo",todoRepository.save(todo));
-        return "redirect:/todo/list";
+        return "redirect:/todo/list/?isActive=true";
     }
 
 
