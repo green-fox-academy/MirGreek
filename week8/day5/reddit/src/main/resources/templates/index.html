@@ -13,7 +13,11 @@
          <tr th:each="onereddit:${redditlist}" th:object="${onereddit}">
              <td th:text="*{id}"></td>
              <td th:text="${onereddit.likeOfReddit}"></td>
-             <td th:url="${onereddit.name}"></td>
+             <td>
+                 <a th:href=" *{url}" >
+                 <p th:text="${onereddit.name}"></p></a>
+             </td>
+             <!--td th:text="${onereddit.name}"></td-->
         </tr>
     </table>
 </body>

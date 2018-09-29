@@ -21,9 +21,9 @@ public class RedditServiceImpl implements RedditSevice {
 
 
     @Override
-    @Transactional
-    public List<Reddit> createReddit(String title) {
-       Reddit reddit = new Reddit(title);
+    public List<Reddit> createReddit(String title, String url) {
+       Reddit reddit = new Reddit(title,url);
+       redditList.add(reddit);
         redditRepository.save(reddit);
         return redditList;
     }

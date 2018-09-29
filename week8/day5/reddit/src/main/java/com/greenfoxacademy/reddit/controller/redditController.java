@@ -35,16 +35,17 @@ public class redditController {
     }
 
     @GetMapping("/submit")
-    public String submitNew(){
+    public String submitNew(Model model){
+        model.addAttribute(new Reddit());
         return "submit";
     }
 
     @PostMapping("/submit")
-    public String postNew(@RequestParam(value = "title")String title,
-                          @RequestParam(value = "url")String url,
+    public String postNew(@RequestParam(value = "name")String name,
+                          @RequestParam(value = "url")String url,Reddit reddit,
                           Model model){
-        redditSevice.createReddit(title);
-        model.addAttribute("redditlist",redditRepository.findAll());
+        redditSevice.createReddit(name,url);
+        model.addAttribute("redditlist",redditRepository.save(reddit));
         return "index";
     }
 

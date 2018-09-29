@@ -11,22 +11,29 @@ import javax.persistence.Id;
 @Entity
 public class Reddit {
     String name;
+    String url;
     long likeOfReddit;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
 
-    public Reddit(String name, long likeOfReddit, long id) {
+    public Reddit(String name, long likeOfReddit, long id, String url) {
         this.name = name;
         this.likeOfReddit = likeOfReddit;
         this.id = id;
+        this.url = url;
+    }
+
+    public Reddit(String name,String url) {
+        this.name = name;
+        this.url = url;
+    }
+
+    public Reddit() {
     }
 
     public Reddit(String name) {
         this.name = name;
-    }
-
-    public Reddit() {
     }
 
 
@@ -52,5 +59,13 @@ public class Reddit {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

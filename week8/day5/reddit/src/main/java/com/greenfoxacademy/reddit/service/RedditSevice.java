@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public interface RedditSevice {
-    public List<Reddit> createReddit(String title);
+    public List<Reddit> createReddit(String title,String url);
     public void addLike(Reddit reddit);
     public void TakeLike(Reddit reddit);
 }
