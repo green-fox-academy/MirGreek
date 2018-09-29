@@ -41,7 +41,6 @@ tr:nth-child(odd) {
 }
 
 .add-form {
-    background-color: white;
     color: black;
     border: solid 2px black;
     display: none;
@@ -52,8 +51,9 @@ tr:nth-child(odd) {
     border-radius: 4px;
     width:500px;
     height:400px;
-    z-index: 1;
-    text-align: start;
+    z-index: 2;
+    text-align: center;
+    background-color:lightblue;
 }
 
 
@@ -132,22 +132,40 @@ body {
     text-align: center;
 }
 #image {
-    width: 120px;
-    height: 120px;
+    width: 170px;
+    height: 170px;
     align-content: center;
     border-radius: 10px;
 }
 .login-form {
-    background-color: white;
-    color: black;
     border: solid 2px black;
+    border-radius: 4px;
+    width:500px;
+    height:400px;
+    text-align: center;
+    background-color:lightblue;
+    color: black;
     display: none;
     position: fixed;
     padding-top: 40px;
     top: 15%;
     left: 35%;
-    border-radius: 4px;
-    width:500px;
-    height:400px;
-    text-align: start;
+
+
+}
+#todo-title {
+    width: 220px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+.mask {
+    background-color: rgba(0,0,0,0.1);
+    position:fixed;
+    height:5000px;
+    width: 98.8%;
+    display: none;
+    margin:0px;
+    z-index: 1;
+    padding: 0px;
 }
