@@ -11,8 +11,9 @@
 <h1>Trending posts</h1>
     <table method="get">
          <tr th:each="onereddit:${redditlist}" th:object="${onereddit}">
-             <td th:text="${reddit.likeOfReddit}"></td>
-             <td th:url="${reddit.name}"></td>
+             <td th:text="*{id}"></td>
+             <td th:text="${onereddit.likeOfReddit}"></td>
+             <td th:url="${onereddit.name}"></td>
         </tr>
     </table>
 </body>
