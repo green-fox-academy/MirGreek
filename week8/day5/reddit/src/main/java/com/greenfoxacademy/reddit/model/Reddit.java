@@ -49,8 +49,8 @@ public class Reddit {
         return likeOfReddit;
     }
 
-    public void setLikeOfReddit(long like) {
-        this.likeOfReddit = 0;
+    public void setLikeOfReddit(long likeOfReddit) {
+        this.likeOfReddit = likeOfReddit;
     }
 
     public long getId() {
@@ -68,4 +68,9 @@ public class Reddit {
     public void setUrl(String url) {
         this.url = url;
     }
+       public void raiseLike(long id){
+       long current= this.getLikeOfReddit();
+       current++;
+       this.setLikeOfReddit(current);
+       }
 }

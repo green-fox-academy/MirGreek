@@ -3,10 +3,12 @@ import com.greenfoxacademy.reddit.RedditRepository;
 import com.greenfoxacademy.reddit.model.Reddit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RedditServiceImpl implements RedditSevice {
@@ -29,17 +31,20 @@ public class RedditServiceImpl implements RedditSevice {
     }
 
     @Override
-    public void addLike(Reddit reddit) {
-       long currentLike= reddit.getLikeOfReddit();
-       currentLike++;
-       reddit.setLikeOfReddit(currentLike);
+    public void addLike(long id) {
+       Reddit reddit = redditRepository.findById(id).get();
+       if(reddit!=null) {
+           reddit.setLikeOfReddit(reddit.getLikeOfReddit() + 1);
+           redditRepository.save(reddit);
+       }
     }
 
     @Override
-    public void TakeLike(Reddit reddit) {
-        long currentLike= reddit.getLikeOfReddit();
-        currentLike--;
-        reddit.setLikeOfReddit(currentLike);
-
+    public void TakeLike(long id) {
+        Reddit reddit=redditRepository.findById(id).get();
+        if (reddit!=null) {
+            reddit.setLikeOfReddit(reddit.getLikeOfReddit() - 1);
+            redditRepository.save(reddit);
+        }
     }
 }

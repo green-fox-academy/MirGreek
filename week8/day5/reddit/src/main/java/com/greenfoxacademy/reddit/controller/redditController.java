@@ -6,10 +6,7 @@ import com.greenfoxacademy.reddit.service.RedditSevice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLOutput;
 import java.util.ArrayList;
@@ -45,8 +42,18 @@ public class redditController {
                           @RequestParam(value = "url")String url,Reddit reddit,
                           Model model){
         redditSevice.createReddit(name,url);
-        model.addAttribute("redditlist",redditRepository.save(reddit));
+        model.addAttribute("redditlist",redditRepository.findAll());
         return "index";
+    }
+    @GetMapping("/add/{id}")
+        public String addLike(@PathVariable(value = "id")Long id){
+           redditSevice.addLike(id);
+            return "redirect:/";
+        }
+    @GetMapping("/dislike/{id}")
+    public String disLike(@PathVariable(value = "id")Long id){
+        redditSevice.TakeLike(id);
+        return "redirect:/";
     }
 
 

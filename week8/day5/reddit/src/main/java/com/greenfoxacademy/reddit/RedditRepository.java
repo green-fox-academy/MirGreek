@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface RedditRepository extends CrudRepository<Reddit,Long> {
     List<Reddit> findAll();
+
+
 }
