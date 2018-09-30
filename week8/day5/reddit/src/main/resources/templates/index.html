@@ -11,14 +11,24 @@
 <h1>Trending posts</h1>
     <table>
          <tr th:each="onereddit:${redditlist}" th:object="${onereddit}">
-             <td th:text="${onereddit.id}"></td>
+             <td style="display:none;" th:text="${onereddit.id}"></td>
              <td th:text="${onereddit.likeOfReddit}"></td>
-              <td>   <a th:href="@{'/add/' + *{id}}">like</a> <div></div>
-                  <a th:href="@{'/dislike/' + *{id}}">dislike</a></td>
+              <!--td>   <!--a th:href="@{'/add/' + *{id}}">like</a>
+                  <a th:href="@{'/dislike/' + *{id}}">dislike</a></td-->
+             <td>
                  <a th:href=" *{url}" >
                  <p th:text="${onereddit.name}"></p></a>
              </td>
-             <!--td th:text="${onereddit.name}"></td-->
+             <td>
+             <form th:action="'/add/'+*{id}" method="get">
+                 <td><input type="hidden" th:value="*{id}" name="id"></td>
+                 <td><input type="submit" name="id" value="like"></td>
+             </form>
+             <form th:action="'/dislike/'+*{id}" method="get">
+                <td><input type="hidden" th:value="*{id}" name="id"></td>
+                <td><input type="submit" name="id" value="dislike"></td>
+             </form>
+             </td>
         </tr>
     </table>
 </body>

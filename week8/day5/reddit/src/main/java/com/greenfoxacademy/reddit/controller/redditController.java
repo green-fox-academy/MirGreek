@@ -46,9 +46,10 @@ public class redditController {
         return "index";
     }
     @GetMapping("/add/{id}")
-        public String addLike(@PathVariable(value = "id")Long id){
+        public String addLike(@PathVariable(value = "id")Long id,Model model){
            redditSevice.addLike(id);
-            return "redirect:/";
+          model.addAttribute("redditlist", redditRepository.findAll());
+            return "index";
         }
     @GetMapping("/dislike/{id}")
     public String disLike(@PathVariable(value = "id")Long id){
