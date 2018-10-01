@@ -17,20 +17,18 @@
         <tr th:each="oneplanet:${planetlist}" th:object="${oneplanet}">
             <td th:text="*{name}"></td>
             <td th:text="*{population}"></td>
-            <td>
-                <form method="post">
-                    <div th:if="${spaceship.active==true}">
-                         <a th:href="@{'/movehere/'+ ${spaceship.id}}">toPlanet</a>
-                        <a th:href="@{'/movehere/'+ ${spaceship.id}}">toShip</a>
-                    </div>
-                    <div>
+
+                    <td th:if="${spaceship.planet}==*{name}">
+                        <a th:href="@{'/movehere/'+ ${spaceship.id}}"> ←toPlanet</a>
+                        <a th:href="@{'/movehere/'+ ${spaceship.id}}">toShip→</a>
+
+                     <td th:unless="${spaceship.planet}==*{name}" >
                         <input type="hidden" name="id">
                         <input type="submit" value="Move here" >
-                    </div>
-                    </div>
-                </form>
-            </td>
-            <td th:text="${spaceship.utilization}"></td>
+                    </td>
+
+            <td th:if="${spaceship.planet}==*{name}" th:text="${spaceship.utilization}"></td>
+            <td th:unless="${spaceship.planet}==*{name}">-</td>
         </tr>
 
 
