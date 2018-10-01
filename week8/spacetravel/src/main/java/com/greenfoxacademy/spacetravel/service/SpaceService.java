@@ -1,5 +1,7 @@
 package com.greenfoxacademy.spacetravel.service;
 
+import com.greenfoxacademy.spacetravel.models.Planet;
+import com.greenfoxacademy.spacetravel.models.SpaceShip;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -7,8 +9,10 @@ import java.util.List;
 @Service
 public interface SpaceService {
 
-     List<List> getPlanets();
+     List<Planet> getPlanets();
 
-     long getSpaceShip(long id);
+     SpaceShip getSpaceShip(long id);
+
+
 
 }

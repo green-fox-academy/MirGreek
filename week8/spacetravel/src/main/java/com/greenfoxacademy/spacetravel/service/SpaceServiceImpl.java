@@ -1,5 +1,7 @@
 package com.greenfoxacademy.spacetravel.service;
 
+import com.greenfoxacademy.spacetravel.models.Planet;
+import com.greenfoxacademy.spacetravel.models.SpaceShip;
 import com.greenfoxacademy.spacetravel.repository.PlanetRepository;
 import com.greenfoxacademy.spacetravel.repository.SpaceShipRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +25,13 @@ public class SpaceServiceImpl implements SpaceService {
     }
 
     @Override
-    public List<List> getPlanets() {
+    public List<Planet> getPlanets() {
         return planetRepository.findAll();
 
     }
 
     @Override
-    public long getSpaceShip(long id) {
+    public SpaceShip getSpaceShip(long id) {
         return spaceShipRepository.findById(id).get();
     }
 }
