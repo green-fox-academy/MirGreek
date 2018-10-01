@@ -4,7 +4,7 @@ public class ErrorModel {
     String error;
 
     public ErrorModel(String error) {
-        this.error = "Please provide an input!";
+        this.error = error;
     }
 
     public String getError() {
@@ -12,6 +12,6 @@ public class ErrorModel {
     }
 
     public void setError(String error) {
-        this.error = "Please provide an input!";
+        this.error = error;
     }
 }

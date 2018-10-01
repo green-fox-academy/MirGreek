@@ -19,21 +19,34 @@ public class MainRestController {
     @Autowired
     public MainRestController(NumberService numberService, PersonService personService) {
         this.numberService = numberService;
-        this.personService =personService;
+        this.personService = personService;
     }
 
     @GetMapping("/doubling")
-    public Object queryInput(@RequestParam(value="input", required = false) Integer input, ErrorModel error){
-        if(input!=null) {
+    public Object queryInput(@RequestParam(value = "input", required = false) Integer input, ErrorModel error) {
+        if (input != null) {
             NumberInput result = numberService.addNumber(input);
             return result;
-        } else  return error;
+        } else {
+            error.setError("Please provide an input!");
+            return error;
+        }
     }
 
     @GetMapping("/greeter")
-    public Object greeter(@RequestParam(value="name")String name,
-                          @RequestParam(value="title")String title){
-        Person person = personService.getWelcomeMessage(name,title);
-        return person;
+    public Object greeter(@RequestParam(value = "name") String name,
+                          @RequestParam(value = "title") String title,
+                          ErrorModel error) {
+        if (name != "" && title != "") {
+            Person person = personService.getWelcomeMessage(name, title);
+            return person;
+        } else if (name.equals("")) {
+            error.setError("Please provide a name!");
+            return error;
+        } else {
+            error.setError("Provide a title, buddy!");
+        } return error;
     }
 }
+
+

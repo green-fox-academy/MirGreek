@@ -8,7 +8,7 @@ public class PersonService {
 
     public Person getWelcomeMessage(String name, String title){
         Person person = new Person(name,title);
-        person.setWelcomeMessage( "Oh, hi there" + name + ",  my dear" + title + "!");
+        person.setWelcomeMessage( "Oh, hi there " + name + ",  my dear " + title + "!");
         return person;
     }
 }
