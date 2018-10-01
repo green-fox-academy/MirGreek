@@ -1,6 +1,6 @@
 package com.greenfoxacademy.spacetravel.controller;
 
-import com.greenfoxacademy.spacetravel.models.Planet;
+/*import com.greenfoxacademy.spacetravel.models.Planet;
 import com.greenfoxacademy.spacetravel.service.SpaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,4 +23,4 @@ public class PlanetRestController {
     List<Planet> planets= spaceService.getPlanets();
         return planets;
     }
-}
+}*/

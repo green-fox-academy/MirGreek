@@ -6,28 +6,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class SpaceShip {
+public class Spaceship {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
     int maxCapacity;
-    int utilisation;
+    int utilization;
     String planet;
+    boolean isActive;
 
-    public SpaceShip(int maxCapacity, int utilisation, String planet) {
+    public Spaceship(int maxCapacity, int utilization, String planet, boolean isActive) {
         this.maxCapacity = maxCapacity;
-        this.utilisation = utilisation;
+        this.utilization = utilization;
         this.planet = planet;
+        this.isActive = false;
     }
 
-    public SpaceShip() {
+    public Spaceship() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -39,12 +41,12 @@ public class SpaceShip {
         this.maxCapacity = maxCapacity;
     }
 
-    public int getUtilisation() {
-        return utilisation;
+    public int getUtilization() {
+        return utilization;
     }
 
-    public void setUtilisation(int utilisation) {
-        this.utilisation = utilisation;
+    public void setUtilization(int utilization) {
+        this.utilization = utilization;
     }
 
     public String getPlanet() {
@@ -54,4 +56,13 @@ public class SpaceShip {
     public void setPlanet(String planet) {
         this.planet = planet;
     }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = false;
+    }
 }
+

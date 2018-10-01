@@ -63,6 +63,8 @@ public class MainRestController {
         } else  error.setError("Please provide a number!");
             return error;
     }
+    //@PostMapping("/arrays")
+    //public Object
 }
 
 

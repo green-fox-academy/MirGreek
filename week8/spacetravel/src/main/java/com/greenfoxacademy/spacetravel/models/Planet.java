@@ -11,7 +11,7 @@ public class Planet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
+    Long id;
     String name;
     long population;
 
@@ -28,7 +28,7 @@ public class Planet {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

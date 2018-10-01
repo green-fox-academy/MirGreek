@@ -1,11 +1,10 @@
 package com.greenfoxacademy.spacetravel.repository;
-import com.greenfoxacademy.spacetravel.models.SpaceShip;
+import com.greenfoxacademy.spacetravel.models.Spaceship;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface SpaceShipRepository  extends CrudRepository<SpaceShip,Long> {
-    List<SpaceShip> findAll();
-    List<SpaceShip> findById();
+public interface SpaceShipRepository  extends CrudRepository<Spaceship,Long> {
+    List<Spaceship> findAll();
 }
