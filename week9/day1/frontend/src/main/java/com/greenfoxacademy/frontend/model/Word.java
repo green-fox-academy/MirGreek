@@ -7,11 +7,11 @@ public class Word {
         this.appended = appended;
     }
 
-    public String getWord() {
+    public String getAppended() {
         return appended;
     }
 
-    public void setWord(String appended) {
+    public void setAppended(String appended) {
         this.appended = appended;
     }
 }

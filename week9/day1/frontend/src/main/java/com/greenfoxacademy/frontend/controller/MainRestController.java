@@ -54,8 +54,8 @@ public class MainRestController {
 
     @GetMapping("/appenda/{appendable}")
     public Object appendA(@PathVariable(value="appendable")String string){
-        Word word = serviceFrontend.appendWord(string);
-        return word;
+        Word appended = serviceFrontend.appendWord(string);
+        return appended;
     }
 }
 

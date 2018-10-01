@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 public class ServiceFrontend {
 
     public Word appendWord(String string){
-        Word word = new Word(string );
-        word.setWord(string+ "a");
-        return word;
+        Word appended = new Word(string );
+        appended.setAppended(string+ "a");
+        return appended;
     }
 }
