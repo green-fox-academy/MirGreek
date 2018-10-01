@@ -38,7 +38,7 @@ public class Spaceship {
     }
 
     public void setMaxCapacity(int maxCapacity) {
-        this.maxCapacity = maxCapacity;
+        this.maxCapacity = 60;
     }
 
     public int getUtilization() {

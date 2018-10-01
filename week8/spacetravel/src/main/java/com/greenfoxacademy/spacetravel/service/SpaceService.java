@@ -13,6 +13,6 @@ public interface SpaceService {
 
      Spaceship getSpaceship(long id);
 
-     void moveHere(long id);
+      void moveHere(long id, String planet);
 
 }

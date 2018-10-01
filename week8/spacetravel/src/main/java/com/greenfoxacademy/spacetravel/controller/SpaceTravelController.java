@@ -1,5 +1,6 @@
 package com.greenfoxacademy.spacetravel.controller;
 
+import com.greenfoxacademy.spacetravel.models.Planet;
 import com.greenfoxacademy.spacetravel.models.Spaceship;
 import com.greenfoxacademy.spacetravel.repository.PlanetRepository;
 import com.greenfoxacademy.spacetravel.repository.SpaceShipRepository;
@@ -34,9 +35,40 @@ public class SpaceTravelController {
     }
 
     @PostMapping ("/movehere/{id}")
-     public String moveHere(@PathVariable(value = "id")long id, Model model, Spaceship ship){
-        ship.setActive(true);
-        spaceService.moveHere(id);
+     public String moveHere(@PathVariable(value = "id")long id,Model model,
+                            Spaceship ship, String planet){
+        spaceService.moveHere(id,planet);
+        spaceShipRepository.save(ship);
+        model.addAttribute("planetlist",spaceService.getPlanets());
+        model.addAttribute("spaceship",spaceService.getSpaceship(1L));
+        return "redirect:/";
+    }
+    @GetMapping ("/toship/{id}")
+    public String toShip(@PathVariable(value="id")long id, Planet planet,Spaceship ship){
+        int maxPeopleOnShip = ship.getMaxCapacity();
+        long actualPeopleOnShip=ship.getUtilization();
+        long planetPopulation =  planet.getPopulation();
+        if (actualPeopleOnShip< maxPeopleOnShip){
+            ship.setUtilization(maxPeopleOnShip);
+            planet.setPopulation(planet.getPopulation()-maxPeopleOnShip);
+        }
+        if(planetPopulation<maxPeopleOnShip)
+            ship.setUtilization((int)planetPopulation);
+            planet.setPopulation(0);
+            planetRepository.save(planet);
+            spaceShipRepository.save(ship);
+        return "redirect:/";
+    }
+
+    @GetMapping ("/toplanet/{id}")
+    public String toPlanet(@PathVariable(value="id")long id, Planet planet,Spaceship ship){
+       String planetName= ship.getPlanet();
+        if (planetName.equals(planet.getName())){
+            planet.setPopulation(((long) ship.getUtilization()));
+            ship.setUtilization(0);
+        }
+        planetRepository.save(planet);
+        spaceShipRepository.save(ship);
         return "redirect:/";
     }
 }
