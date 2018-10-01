@@ -2,7 +2,9 @@ package com.greenfoxacademy.frontend.controller;
 
 import com.greenfoxacademy.frontend.model.ErrorModel;
 import com.greenfoxacademy.frontend.model.NumberInput;
+import com.greenfoxacademy.frontend.model.Person;
 import com.greenfoxacademy.frontend.service.NumberService;
+import com.greenfoxacademy.frontend.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,10 +14,12 @@ import org.springframework.web.bind.annotation.*;
 public class MainRestController {
 
     NumberService numberService;
+    PersonService personService;
 
     @Autowired
-    public MainRestController(NumberService numberService) {
+    public MainRestController(NumberService numberService, PersonService personService) {
         this.numberService = numberService;
+        this.personService =personService;
     }
 
     @GetMapping("/doubling")
@@ -24,8 +28,12 @@ public class MainRestController {
             NumberInput result = numberService.addNumber(input);
             return result;
         } else  return error;
+    }
 
-
-
+    @GetMapping("/greeter")
+    public Object greeter(@RequestParam(value="name")String name,
+                          @RequestParam(value="title")String title){
+        Person person = personService.getWelcomeMessage(name,title);
+        return person;
     }
 }
