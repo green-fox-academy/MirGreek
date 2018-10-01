@@ -57,9 +57,11 @@ public class MainRestController {
 
     @PostMapping ("dountil/{action}")
     public Object doUntil(@PathVariable(value = "action")String action,
-                         @RequestBody DoUntil number){
-
-        return serviceFrontend.sumOrFactorNumber(action, number);
+                         @RequestBody DoUntil number, ErrorModel error){
+        if(number!=null){
+            return serviceFrontend.sumOrFactorNumber(action, number);
+        } else  error.setError("Please provide a number!");
+            return error;
     }
 }
 
