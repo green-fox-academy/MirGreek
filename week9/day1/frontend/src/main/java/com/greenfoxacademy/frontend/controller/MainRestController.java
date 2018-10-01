@@ -1,9 +1,6 @@
 package com.greenfoxacademy.frontend.controller;
 
-import com.greenfoxacademy.frontend.model.ErrorModel;
-import com.greenfoxacademy.frontend.model.NumberInput;
-import com.greenfoxacademy.frontend.model.Person;
-import com.greenfoxacademy.frontend.model.Word;
+import com.greenfoxacademy.frontend.model.*;
 import com.greenfoxacademy.frontend.service.NumberService;
 import com.greenfoxacademy.frontend.service.PersonService;
 import com.greenfoxacademy.frontend.service.ServiceFrontend;
@@ -56,6 +53,13 @@ public class MainRestController {
     public Object appendA(@PathVariable(value="appendable")String string){
         Word appended = serviceFrontend.appendWord(string);
         return appended;
+    }
+
+    @PostMapping ("dountil/{action}")
+    public Object doUntil(@PathVariable(value = "action")String action,
+                         @RequestBody DoUntil number){
+
+        return serviceFrontend.sumOrFactorNumber(action, number);
     }
 }
 
