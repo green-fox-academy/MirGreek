@@ -13,13 +13,11 @@ public class Spaceship {
     int maxCapacity;
     int utilization;
     String planet;
-    boolean isActive;
 
-    public Spaceship(int maxCapacity, int utilization, String planet, boolean isActive) {
+    public Spaceship(int maxCapacity, int utilization, String planet) {
         this.maxCapacity = maxCapacity;
         this.utilization = utilization;
         this.planet = planet;
-        this.isActive = false;
     }
 
     public Spaceship() {
@@ -57,12 +55,5 @@ public class Spaceship {
         this.planet = planet;
     }
 
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = false;
-    }
 }
 

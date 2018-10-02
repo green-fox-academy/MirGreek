@@ -35,8 +35,37 @@ public class SpaceServiceImpl implements SpaceService {
     }
 
     @Override
-    public void moveHere(long id, String planet) {
-        getSpaceship(id).setPlanet(planet);
+    public void moveHere(Long planetId) {
+     String planetName=planetRepository.findAllById(planetId).getName(); //Moon, id:1
+        Spaceship ship = spaceShipRepository.findAllById(1L);
+                ship.setPlanet(planetName);
+                spaceShipRepository.save(ship);
     }
+
+    @Override
+    public void moveToShip(Spaceship ship, Planet planet) {
+        int maxPeopleOnShip = 60;
+        int actualPeopleOnShip=ship.getUtilization();
+        long planetPopulation =  planet.getPopulation();
+        if (actualPeopleOnShip< maxPeopleOnShip){
+            ship.setUtilization(actualPeopleOnShip); //60
+            planet.setPopulation(planet.getPopulation()-actualPeopleOnShip);
+        }
+        if(planetPopulation<actualPeopleOnShip){
+            ship.setUtilization((int)planetPopulation);
+            planet.setPopulation(0);
+        }
+        if(planetPopulation<maxPeopleOnShip)
+            ship.setUtilization((int)planetPopulation);
+        planet.setPopulation(0);
+        planetRepository.save(planet);
+        spaceShipRepository.save(ship);
+    }
+
+    @Override
+    public void moveToPlanet() {
+
+    }
+
 
 }

@@ -30,33 +30,18 @@ public class SpaceTravelController {
     @GetMapping("/")
     public String getMain(Model model){
        model.addAttribute("planetlist",spaceService.getPlanets());
-         model.addAttribute("spaceship",spaceService.getSpaceship(1L));
+        model.addAttribute("spaceship",spaceService.getSpaceship(1L));
         return "index";
     }
 
     @PostMapping ("/movehere/{id}")
-     public String moveHere(@PathVariable(value = "id")long id,Model model,
-                            Spaceship ship, String planet){
-        spaceService.moveHere(id,planet);
-        spaceShipRepository.save(ship);
-        model.addAttribute("planetlist",spaceService.getPlanets());
-        model.addAttribute("spaceship",spaceService.getSpaceship(1L));
+     public String moveHere(@PathVariable(value = "id")long id){
+        spaceService.moveHere(id);
         return "redirect:/";
     }
     @GetMapping ("/toship/{id}")
-    public String toShip(@PathVariable(value="id")long id, Planet planet,Spaceship ship){
-        int maxPeopleOnShip = ship.getMaxCapacity();
-        long actualPeopleOnShip=ship.getUtilization();
-        long planetPopulation =  planet.getPopulation();
-        if (actualPeopleOnShip< maxPeopleOnShip){
-            ship.setUtilization(maxPeopleOnShip);
-            planet.setPopulation(planet.getPopulation()-maxPeopleOnShip);
-        }
-        if(planetPopulation<maxPeopleOnShip)
-            ship.setUtilization((int)planetPopulation);
-            planet.setPopulation(0);
-            planetRepository.save(planet);
-            spaceShipRepository.save(ship);
+    public String toShip(@PathVariable(value="id")long planetId, Planet planet,Spaceship ship){
+        spaceService.moveToShip(ship,planet);
         return "redirect:/";
     }
 

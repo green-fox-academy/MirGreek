@@ -20,11 +20,14 @@ public class Planet {
         this.name = name;
         this.population = population;
     }
+    public Planet(long id) {
+        this.id=id;
+    }
 
     public Planet() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

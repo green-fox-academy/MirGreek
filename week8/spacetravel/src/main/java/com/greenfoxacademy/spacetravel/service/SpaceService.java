@@ -11,8 +11,10 @@ public interface SpaceService {
 
      List<Planet> getPlanets();
 
-     Spaceship getSpaceship(Long id);
+    public Spaceship getSpaceship(Long id);
 
-      void moveHere(long id, String planet);
+      void moveHere(Long id);
+    public void moveToShip(Spaceship ship, Planet planet);
+    public void moveToPlanet();
 
 }
