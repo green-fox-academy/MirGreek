@@ -23,7 +23,7 @@ public class ServiceFrontend {
             }
         } else if (action.equals("factor")) {
             temp=1;
-            for (int i = 0; i <=number.getUntil(); i++) {
+            for (int i = 1; i <=number.getUntil(); i++) {
                     temp*=i;
             }
         }
