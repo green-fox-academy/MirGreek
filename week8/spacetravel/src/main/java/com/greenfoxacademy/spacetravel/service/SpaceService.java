@@ -14,7 +14,7 @@ public interface SpaceService {
     public Spaceship getSpaceship(Long id);
 
       void moveHere(Long id);
-    public void moveToShip(Spaceship ship, Planet planet);
+    void moveToShip(Long id);
     public void moveToPlanet();
 
 }

@@ -40,8 +40,8 @@ public class SpaceTravelController {
         return "redirect:/";
     }
     @GetMapping ("/toship/{id}")
-    public String toShip(@PathVariable(value="id")long planetId, Planet planet,Spaceship ship){
-        spaceService.moveToShip(ship,planet);
+    public String toShip(@PathVariable(value="id")long id){
+        spaceService.moveToShip(id);
         return "redirect:/";
     }
 

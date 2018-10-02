@@ -20,7 +20,7 @@
 
                     <td th:if="${spaceship.planet}==${oneplanet.name}" th:object="${oneplanet}">
                         <a th:href="@{'/toplanet/'+ ${oneplanet.id}}"> ←toPlanet</a>
-                        <a th:href="@{'/toship/'+ ${oneplanet.id}}">toShip→</a></td>
+                        <a th:href="@{'/toship/'+ *{id}}">toShip→</a></td>
                      <td th:unless="${spaceship.planet}==${oneplanet.name}" >
                         <form action="#" th:action="@{'/movehere/' + ${oneplanet.id}}" method="post">
                             <input type="submit" value="Move here" >

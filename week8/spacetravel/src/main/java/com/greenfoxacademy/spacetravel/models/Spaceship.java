@@ -15,7 +15,7 @@ public class Spaceship {
     String planet;
 
     public Spaceship(int maxCapacity, int utilization, String planet) {
-        this.maxCapacity = maxCapacity;
+        this.maxCapacity = 60;
         this.utilization = utilization;
         this.planet = planet;
     }
@@ -32,7 +32,7 @@ public class Spaceship {
     }
 
     public int getMaxCapacity() {
-        return maxCapacity;
+        return 60;
     }
 
     public void setMaxCapacity(int maxCapacity) {
