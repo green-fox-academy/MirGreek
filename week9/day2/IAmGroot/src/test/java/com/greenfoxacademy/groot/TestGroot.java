@@ -2,6 +2,7 @@ package com.greenfoxacademy.groot;
 
 import com.greenfoxacademy.groot.controller.GuardianController;
 import com.greenfoxacademy.groot.models.Groot;
+import com.greenfoxacademy.groot.models.GrootError;
 import com.greenfoxacademy.groot.services.GuardianService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -51,6 +52,18 @@ public class TestGroot {
                 .andExpect(content().contentType(contentType))
                 .andExpect(jsonPath("$.received", is(received)))
                 .andExpect(jsonPath("$.translated", is(translated)))
+                .andDo(print());
+    }
+    @Test
+    public void testIfGrootAnswersWhenNoInput() throws Exception {
+        String expectedErrorMessage="I am Groot";
+
+        when(guardianService.ErrorOfGroot()).thenReturn(new GrootError(expectedErrorMessage));
+
+        mockMvc.perform(get("/groot"))
+                .andExpect(status().is(400))
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$.error", is(expectedErrorMessage)))
                 .andDo(print());
     }
 }

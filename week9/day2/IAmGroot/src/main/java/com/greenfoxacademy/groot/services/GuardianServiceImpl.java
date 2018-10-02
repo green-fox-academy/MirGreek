@@ -16,7 +16,7 @@ public class GuardianServiceImpl implements GuardianService {
     @Override
     public GrootError ErrorOfGroot() {
         GrootError error = new GrootError();
-        error.getError();
+        error.setError("I am Groot!");
         return error;
     }
 }
