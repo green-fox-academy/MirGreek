@@ -61,9 +61,9 @@ public class SpaceServiceImpl implements SpaceService {
             planet.setPopulation(planetPopulation-max);
             } else if (planetPopulation<max){
             planet.setPopulation(0);
-        } else if (peopleOnShip>=max){
-            peopleOnShip=60;
-        }
+        } //else if (peopleOnShip>=max){
+            //peopleOnShip=60;
+        //}
 
         planetRepository.save(planet);
         spaceShipRepository.save(ship);
