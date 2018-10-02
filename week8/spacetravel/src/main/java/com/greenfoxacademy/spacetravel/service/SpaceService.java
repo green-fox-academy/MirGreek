@@ -11,7 +11,7 @@ public interface SpaceService {
 
      List<Planet> getPlanets();
 
-     Spaceship getSpaceship(long id);
+     Spaceship getSpaceship(Long id);
 
       void moveHere(long id, String planet);
 

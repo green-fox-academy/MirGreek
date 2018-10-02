@@ -30,8 +30,8 @@ public class SpaceServiceImpl implements SpaceService {
     }
 
     @Override
-    public Spaceship getSpaceship(long id) {
-        return spaceShipRepository.findById(id).get();
+    public Spaceship getSpaceship(Long id) {
+        return spaceShipRepository.findAllById(id);
     }
 
     @Override

@@ -7,4 +7,5 @@ import java.util.List;
 @Repository
 public interface SpaceShipRepository  extends CrudRepository<Spaceship,Long> {
     List<Spaceship> findAll();
+    Spaceship findAllById(Long id);
 }
