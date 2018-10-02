@@ -46,14 +46,8 @@ public class SpaceTravelController {
     }
 
     @GetMapping ("/toplanet/{id}")
-    public String toPlanet(@PathVariable(value="id")long id, Planet planet,Spaceship ship){
-       String planetName= ship.getPlanet();
-        if (planetName.equals(planet.getName())){
-            planet.setPopulation(((long) ship.getUtilization()));
-            ship.setUtilization(0);
-        }
-        planetRepository.save(planet);
-        spaceShipRepository.save(ship);
+    public String toPlanet(@PathVariable(value="id")long id){
+        spaceService.moveToPlanet(id);
         return "redirect:/";
     }
 }

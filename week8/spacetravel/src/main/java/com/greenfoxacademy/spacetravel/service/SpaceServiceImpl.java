@@ -46,10 +46,11 @@ public class SpaceServiceImpl implements SpaceService {
     public void moveToShip(Long id) {
         Spaceship ship = spaceShipRepository.findAllById(1L);
         Planet planet =planetRepository.findAllById(id);
-        int max = ship.getMaxCapacity();
 
+        int max = ship.getMaxCapacity();
         int peopleOnShip=ship.getUtilization();
         long planetPopulation =  planet.getPopulation();
+
         if (peopleOnShip< max) {
             ship.setUtilization((int) (planetPopulation + peopleOnShip));
             planet.setPopulation(+(planetPopulation - peopleOnShip));
@@ -61,17 +62,28 @@ public class SpaceServiceImpl implements SpaceService {
             planet.setPopulation(planetPopulation-max);
             } else if (planetPopulation<max){
             planet.setPopulation(0);
-        } //else if (peopleOnShip>=max){
-            //peopleOnShip=60;
-        //}
+        }
 
         planetRepository.save(planet);
         spaceShipRepository.save(ship);
     }
 
     @Override
-    public void moveToPlanet() {
+    public void moveToPlanet(Long id) {
+        Spaceship ship = spaceShipRepository.findAllById(1L);
+        Planet planet =planetRepository.findAllById(id);
 
+        int max = ship.getMaxCapacity();
+        int peopleOnShip=ship.getUtilization();
+        long planetPopulation =  planet.getPopulation();
+
+        if(peopleOnShip<planetPopulation) {
+            planet.setPopulation(planetPopulation + peopleOnShip);
+            ship.setUtilization(0);
+        }else  planet.setPopulation(peopleOnShip+planetPopulation);
+             ship.setUtilization(0);
+        planetRepository.save(planet);
+        spaceShipRepository.save(ship);
     }
 
 

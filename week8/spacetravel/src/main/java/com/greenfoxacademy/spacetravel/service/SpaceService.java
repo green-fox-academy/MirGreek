@@ -11,10 +11,10 @@ public interface SpaceService {
 
      List<Planet> getPlanets();
 
-    public Spaceship getSpaceship(Long id);
+    Spaceship getSpaceship(Long id);
 
-      void moveHere(Long id);
+    void moveHere(Long id);
     void moveToShip(Long id);
-    public void moveToPlanet();
+    void moveToPlanet(Long id);
 
 }
