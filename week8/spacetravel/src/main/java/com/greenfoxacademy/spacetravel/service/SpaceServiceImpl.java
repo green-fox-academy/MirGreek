@@ -51,15 +51,22 @@ public class SpaceServiceImpl implements SpaceService {
         int peopleOnShip=ship.getUtilization();
         long planetPopulation =  planet.getPopulation();
 
-        if (peopleOnShip<= max) {
+        if (peopleOnShip< max) {
             ship.setUtilization((int) (planetPopulation + peopleOnShip));
             planet.setPopulation(+(planetPopulation - peopleOnShip));
-        }if(planetPopulation<=peopleOnShip) {
+        } else if(peopleOnShip==max){
+            planet.setPopulation(planetPopulation);
+            ship.setUtilization(max);
+        }
+        if(planetPopulation<=peopleOnShip) {
             planet.setPopulation(0);
         }
-        if(planetPopulation>=max){
+        if(planetPopulation>peopleOnShip){
             ship.setUtilization(max);
-            planet.setPopulation(planetPopulation-max);
+            if (peopleOnShip==max){
+                planet.setPopulation(planetPopulation);
+            } else
+            planet.setPopulation(planetPopulation-peopleOnShip);
             } else if (planetPopulation<=max){
             planet.setPopulation(0);
         }
