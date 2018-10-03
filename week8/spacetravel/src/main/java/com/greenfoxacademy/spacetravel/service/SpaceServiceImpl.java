@@ -46,8 +46,32 @@ public class SpaceServiceImpl implements SpaceService {
     public void moveToShip(Long id) {
         Spaceship ship = spaceShipRepository.findAllById(1L);
         Planet planet =planetRepository.findAllById(id);
-        
+
+        int max = ship.getMaxCapacity();
+
         changePopulation(ship,planet);
+        /*if (peopleOnShip< max) {
+            ship.setUtilization((int) (planetPopulation + peopleOnShip));
+            planet.setPopulation(planetPopulation - peopleOnShip);
+        } else if(peopleOnShip==max){
+            planet.setPopulation(planetPopulation);
+            ship.setUtilization(max);
+        }
+        if(planetPopulation<=peopleOnShip) {
+            planet.setPopulation(0);
+            ship.setUtilization((int)planetPopulation);
+        }
+        if(planetPopulation>=peopleOnShip){
+            ship.setUtilization(max);
+            planet.setPopulation(planetPopulation-(max-peopleOnShip));
+            if (peopleOnShip==max){
+                ship.setUtilization(max);
+                planet.setPopulation(planetPopulation);
+            } else
+                planet.setPopulation(planetPopulation-peopleOnShip);
+        } else if (planetPopulation<=max){
+            planet.setPopulation(0);
+        }*/
 
         planetRepository.save(planet);
         spaceShipRepository.save(ship);
@@ -79,9 +103,12 @@ public class SpaceServiceImpl implements SpaceService {
             newShipUtil = (int) planet.getPopulation();
             ship.setUtilization(newShipUtil);
             planet.setPopulation(planet.getPopulation() - newShipUtil);
-            if (ship.getUtilization() < max && planet.getPopulation() >= ship.getUtilization())
+        } else if (ship.getUtilization() < max && planet.getPopulation() >= max){
                 ship.setUtilization(max);
-            planet.setPopulation(planet.getPopulation() - max);
+                planet.setPopulation(planet.getPopulation() - max);
+        } else if (ship.getUtilization() < max && planet.getPopulation() <= max){
+                ship.setUtilization((int)planet.getPopulation());
+                planet.setPopulation(0);
         } else if (ship.getUtilization() == max) {
             ship.setUtilization(max);
             planet.setPopulation(planet.getPopulation());
