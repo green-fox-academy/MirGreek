@@ -1,25 +1,30 @@
 package com.greenfoxacademy.chatapp.controller;
 
-import com.greenfoxacademy.chatapp.model.User;
-import com.greenfoxacademy.chatapp.repository.ChatRepository;
+import com.greenfoxacademy.chatapp.model.Status;
+import com.greenfoxacademy.chatapp.repository.MessageRepository;
+import com.greenfoxacademy.chatapp.repository.StatusRepository;
+import com.greenfoxacademy.chatapp.repository.UserRepository;
 import com.greenfoxacademy.chatapp.service.ChatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import javax.jws.WebParam;
 
 @Controller
 public class ChatController {
-    ChatRepository chatRepository;
+    UserRepository chatRepository;
+    MessageRepository messageRepository;
+    StatusRepository statusRepository;
     ChatService chatService;
 
     @Autowired
-    public ChatController(ChatRepository chatRepository, ChatService chatService) {
+    public ChatController(UserRepository chatRepository, MessageRepository messageRepository, StatusRepository statusRepository, ChatService chatService) {
         this.chatRepository = chatRepository;
+        this.messageRepository = messageRepository;
+        this.statusRepository = statusRepository;
         this.chatService = chatService;
     }
+
+
     @GetMapping("/")
     public String mainPage(){
         return "index";
@@ -29,11 +34,14 @@ public class ChatController {
         return "login";
     }
     @PostMapping("/register")
-    public String register(@ModelAttribute(value="name")String name, Model model){
+    public String register(@ModelAttribute(value="name")String name, Status status){
+        if(name==null){
+            chatService.setErrorMessage();
+        }
         chatService.createUserByName(name);
-        //model.addAttribute("name",name);
         return "redirect:/";
     }
+
 
 
 }

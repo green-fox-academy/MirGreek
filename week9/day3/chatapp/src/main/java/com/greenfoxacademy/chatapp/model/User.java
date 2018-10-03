@@ -9,7 +9,7 @@ import java.util.Random;
 @Entity
 public class User {
 
-    Random random = new Random( 1000000 - 9999999);
+
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY )
     Long id;
@@ -17,8 +17,7 @@ public class User {
     String text;
     Long timestamp;
 
-    public User(Random random, Long id, String userName, String text, Long timestamp) {
-        this.random = random;
+    public User(Long id, String userName, String text, Long timestamp) {
         this.id = id;
         this.userName = userName;
         this.text = text;
@@ -30,14 +29,6 @@ public class User {
 
     public User(String userName) {
         this.userName = userName;
-    }
-
-    public Random getRandom() {
-        return random;
-    }
-
-    public void setRandom(Random random) {
-        this.random = random;
     }
 
     public Long getId() {
