@@ -67,15 +67,24 @@ public class ShelterController {
         shelterService.addAnimalToShelter(shelterId,animal);
         return "redirect:/profile/"+ shelterId;
     }
-    @GetMapping("profile/{id}/adopt")
+    @PostMapping("profile/{id}/adopt")
     public String adoptAnimal(@PathVariable(value="id")Long shelterId, Model model,
                               @ModelAttribute(value="animalId")Long animalId,
                               @ModelAttribute Person person){
-        //shelterService.adoptAnimal(animalId,person);
-        model.addAttribute("animal",animalRepository.findById(animalId));
-        model.addAttribute("person",shelterService.adoptAnimal(animalId,shelterId,person));
+        shelterService.adoptAnimal(animalId,shelterId,person);
         return "person";
     }
+    @PostMapping("/shelters/{id}/adopt")
+    public String adopt(@PathVariable(value = "id") Long shelterId,
+                        @ModelAttribute(value = "user-id") Long userId,
+                        @ModelAttribute(value = "animal-id") Long animalId) {
+           Person person= personRepository.findById(userId).get();
+        shelterService.adoptAnimal(animalId,shelterId,person);
+        return "redirect:/profile";
+    }
+
+
+
 
 
 

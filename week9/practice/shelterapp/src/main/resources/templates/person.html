@@ -7,8 +7,8 @@
 <body>
 <h1 th:text="'Congrats, '+ ${person} + '! You are new adopter now!'"></h1>
 <h3>You have new friend(s)! :)</h3>
-<ul th:each="animal:${person}">
-    <li th:text="${animal}">
+<ul th:each="animal:${person.animals}" th:object="${animal}">
+    <li th:text="${animal.name}">
     </li>
 </ul>
 </body>

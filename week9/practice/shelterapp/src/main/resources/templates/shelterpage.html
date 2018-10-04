@@ -23,8 +23,11 @@
         <td th:text="*{color}"></td>
         <td th:text="*{age}"></td>
         <td>
-            <form method="post" th:action="@{'profile/' + ${animal.id}+'/adopt'}">
+            <form method="post" action="#" th:action="@{'/shelters/'+ ${shelter.id}+'/adopt'}">
                 <input type="submit" name="adopt" value="adopt animal">
+                <input type="hidden" value="13" name="user-id" >
+                <input type="hidden" th:value="*{id}" name="animal-id" >
+
             </form>
         </td>
     </tr>
