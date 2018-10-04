@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Main</title>
@@ -11,6 +11,22 @@
     <label for="name" >Your username: </label>
     <input type="text" name="name" id="name">
     <input type="submit" value="update">
+</form>
+<h3>
+    <li>App</li>
+    Hi there! Submit your message using the send button!
+</h3>
+<div>
+    <!--ul th:each="u: ${user}"-->
+        <li th:text="${user.userName}" th:object="${user}">
+
+        </li>
+    </ul>
+</div>
+<form method="post" action="/message">
+    <label for="message" >Write message: </label>
+    <input type="text" name="name" id="message">
+    <input type="submit" value="send">
 </form>
 </body>
 </html>

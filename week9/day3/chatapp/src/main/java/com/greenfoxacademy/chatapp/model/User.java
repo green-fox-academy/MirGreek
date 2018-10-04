@@ -14,13 +14,13 @@ public class User {
     @GeneratedValue(strategy =GenerationType.IDENTITY )
     Long id;
     String userName;
-    String text;
+    //String text;
     Long timestamp;
 
-    public User(Long id, String userName, String text, Long timestamp) {
+    public User(Long id, String userName, Long timestamp) {
         this.id = id;
         this.userName = userName;
-        this.text = text;
+        //this.text = text;
         this.timestamp = timestamp;
     }
 
@@ -45,14 +45,6 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
     }
 
     public Long getTimestamp() {

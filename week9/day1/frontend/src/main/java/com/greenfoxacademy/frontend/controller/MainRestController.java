@@ -1,6 +1,7 @@
 package com.greenfoxacademy.frontend.controller;
 
 import com.greenfoxacademy.frontend.model.*;
+import com.greenfoxacademy.frontend.service.ErrorService;
 import com.greenfoxacademy.frontend.service.NumberService;
 import com.greenfoxacademy.frontend.service.PersonService;
 import com.greenfoxacademy.frontend.service.ServiceFrontend;
@@ -15,13 +16,16 @@ public class MainRestController {
     NumberService numberService;
     PersonService personService;
     ServiceFrontend serviceFrontend;
+    ErrorService errorService;
 
     @Autowired
-    public MainRestController(NumberService numberService, PersonService personService, ServiceFrontend ServiceFrontend) {
+    public MainRestController(NumberService numberService, PersonService personService, ServiceFrontend serviceFrontend, ErrorService errorService) {
         this.numberService = numberService;
         this.personService = personService;
-        this.serviceFrontend = ServiceFrontend;
+        this.serviceFrontend = serviceFrontend;
+        this.errorService = errorService;
     }
+
 
     @GetMapping("/doubling")
     public Object queryInput(@RequestParam(value = "input", required = false) Integer input, ErrorModel error) {
@@ -46,25 +50,33 @@ public class MainRestController {
             return error;
         } else {
             error.setError("Provide a title, buddy!");
-        } return error;
+        }
+        return error;
     }
 
     @GetMapping("/appenda/{appendable}")
-    public Object appendA(@PathVariable(value="appendable")String string){
+    public Object appendA(@PathVariable(value = "appendable") String string) {
         Word appended = serviceFrontend.appendWord(string);
         return appended;
     }
 
-    @PostMapping ("dountil/{action}")
-    public Object doUntil(@PathVariable(value = "action")String action,
-                         @RequestBody DoUntil number, ErrorModel error){
-        if(number!=null){
+    @PostMapping("dountil/{action}")
+    public Object doUntil(@PathVariable(value = "action") String action,
+                          @RequestBody DoUntil number, ErrorModel error) {
+        if (number != null) {
             return serviceFrontend.sumOrFactorNumber(action, number);
-        } else  error.setError("Please provide a number!");
-            return error;
+        } else error.setError("Please provide a number!");
+        return error;
     }
-    //@PostMapping("/arrays")
-    //public Object
+
+    @PostMapping("/arrays")
+    public ResponseEntity<?> arrayHandler(ErrorModel error,@RequestBody(required = false) ArrayModel numbers) {
+        if (numbers.getWhat() != null) {
+            serviceFrontend.sumMultiplyOrDouble( numbers);
+            ResponseEntity.ok().body(numbers);
+        } else errorService.createError("Please provide what to do with the numbers!");
+        return  ResponseEntity.ok().body(error);
+    }
 }
 
 
