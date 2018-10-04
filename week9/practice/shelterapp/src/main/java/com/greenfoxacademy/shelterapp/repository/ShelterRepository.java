@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface ShelterRepository extends CrudRepository<Shelter,Long> {
     List<Shelter> findAll();
+
 }

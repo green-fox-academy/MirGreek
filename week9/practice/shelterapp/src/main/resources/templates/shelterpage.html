@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${shelter.name} "></title>
+</head>
+<body>
+<h1 th:text="${shelter.name} "></h1>
+<div>
+    <h2>Animals in the shelter</h2>
+</div>
+
+<table>
+    <thead>
+    <th>Name</th>
+    <th>Color</th>
+    <th>Age</th>
+    <th>Adoptation</th>
+    </thead>
+    <tbody>
+    <tr th:each="animal: ${shelter.animals}" th:object="${animal}">
+        <td th:text="*{name}"></td>
+        <td th:text="*{color}"></td>
+        <td th:text="*{age}"></td>
+        <td>
+            <form>
+                <input type="submit" value="Adopt">
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>

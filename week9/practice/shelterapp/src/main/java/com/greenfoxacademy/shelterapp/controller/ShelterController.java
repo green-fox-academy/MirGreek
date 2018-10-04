@@ -1,5 +1,7 @@
 package com.greenfoxacademy.shelterapp.controller;
+import com.greenfoxacademy.shelterapp.model.Animal;
 import com.greenfoxacademy.shelterapp.model.Shelter;
+import com.greenfoxacademy.shelterapp.repository.AnimalRepository;
 import com.greenfoxacademy.shelterapp.repository.ShelterRepository;
 import com.greenfoxacademy.shelterapp.service.ShelterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -17,12 +20,17 @@ public class ShelterController {
 
     ShelterService shelterService;
     ShelterRepository shelterRepository;
+    AnimalRepository animalRepository;
 
     @Autowired
-    public ShelterController(ShelterService shelterService, ShelterRepository shelterRepository) {
+    public ShelterController(ShelterService shelterService, ShelterRepository shelterRepository, AnimalRepository animalRepository) {
         this.shelterService = shelterService;
         this.shelterRepository = shelterRepository;
+        this.animalRepository = animalRepository;
     }
+
+
+
 
 
 
@@ -39,6 +47,13 @@ public class ShelterController {
         model.addAttribute("shelters",shelter);
         return "redirect:/shelters";
     }
+    @GetMapping("/shelters/{id}")
+    public String getsheltersPageById(@PathVariable(value = "id")Long id, Model model){
+        Shelter shelter =  shelterService.getShelterById(id);
+        model.addAttribute("shelter",shelter);
+        return "shelterpage";
+    }
+
 
 
 

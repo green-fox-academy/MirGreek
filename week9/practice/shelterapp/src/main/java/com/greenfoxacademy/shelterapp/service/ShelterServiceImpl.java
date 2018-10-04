@@ -25,4 +25,10 @@ public class ShelterServiceImpl implements ShelterService {
         shelterRepository.findAll();
         return shelter;
     }
+
+    @Override
+    public Shelter getShelterById(Long id) {
+        Shelter shelter =  shelterRepository.findById(id).get();
+        return shelter ;
+    }
 }

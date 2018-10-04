@@ -7,9 +7,11 @@
 <body>
     <h1>Shelters</h1>
     <ul th:each="shelter:${shelters}">
-        <a th:href="@{'/shelter/'+ *{id}}" th:text="${shelter.name}"></a>
+        <li>
+        <a th:href="@{'/shelters/'+ ${shelter.id}}" th:text="${shelter.name}"></a>
+        </li>
     </ul>
-    <form method="post" action="/addNew">
+    <form method="post" action="/addNew" >
         <label for="add">Add a new shelter: </label>
         <input type="text" name="add" id="add">
         <input type="submit" name="submit">

@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-/*
+
 @Entity
 public class Animal {
     @Id
@@ -55,4 +55,3 @@ public class Animal {
         this.age = age;
     }
 }
-*/

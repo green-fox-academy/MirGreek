@@ -7,4 +7,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface ShelterService {
     Shelter createShelter(String name);
+    Shelter getShelterById(Long id);
 }
