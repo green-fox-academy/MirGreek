@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shelters</title>
+</head>
+<body>
+    <h1>Shelters</h1>
+    <ul th:each="shelter:${shelters}">
+        <li th:text="${shelter.name}"></li>
+    </ul>
+    <form method="post" action="/addNew">
+        <label for="add">Add a new shelter: </label>
+        <input type="text" name="add" id="add">
+        <input type="submit" name="submit">
+    </form>
+</body>
+</html>
