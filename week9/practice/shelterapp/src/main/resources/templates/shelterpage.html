@@ -23,13 +23,30 @@
         <td th:text="*{color}"></td>
         <td th:text="*{age}"></td>
         <td>
-            <form>
-                <input type="submit" value="Adopt">
+            <form method="post" th:action="@{'profile/' + ${animal.id}+'/adopt'}">
+                <input type="submit" name="adopt" value="adopt animal">
             </form>
         </td>
     </tr>
     </tbody>
 </table>
+    <div>
+
+        <form th:object="${newanimal}" action="#" th:action="@{'/profile/' + ${shelter.id}}" method="post">
+            <label for="name">Name</label>
+            <label for="color">Color</label>
+            <label for="age">Age</label>
+
+            <input type="text" th:field="*{name}" id="name">
+            <input type="text" th:field="*{color}" id="color">
+            <input type="text" th:field="*{age}" id="age">
+            <input type="submit" value="Add">
+        </form>
+
+
+    </div>
+
+
 
 
 </body>

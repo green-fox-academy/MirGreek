@@ -47,11 +47,28 @@ public class ShelterController {
         model.addAttribute("shelters",shelter);
         return "redirect:/shelters";
     }
-    @GetMapping("/shelters/{id}")
+    @GetMapping("/profile/{id}")
     public String getsheltersPageById(@PathVariable(value = "id")Long id, Model model){
         Shelter shelter =  shelterService.getShelterById(id);
         model.addAttribute("shelter",shelter);
+        model.addAttribute("newanimal",new Animal());
         return "shelterpage";
+    }
+    @PostMapping("profile/{id}")
+    public String addNewAnimalToShelter(//@ModelAttribute(value="name")String name,
+                                      // @ModelAttribute(value = "color")String color,
+                                       //@ModelAttribute(value = "age")int age,
+                                        @ModelAttribute Animal animal,
+                                       @PathVariable(value="id")Long shelterId,
+                                       Model model ){
+        //Animal animal = shelterService.addNewAnimal(name,color,age);
+        shelterService.addAnimalToShelter(shelterId,animal);
+
+        return "redirect:/profile/"+ shelterId;
+    }
+    @PostMapping("profile/{id}/adopt")
+    public String adoptAnimal(@PathVariable(value="id")Long id){
+        return "redirect:/profile";
     }
 
 

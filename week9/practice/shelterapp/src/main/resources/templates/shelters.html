@@ -8,7 +8,7 @@
     <h1>Shelters</h1>
     <ul th:each="shelter:${shelters}">
         <li>
-        <a th:href="@{'/shelters/'+ ${shelter.id}}" th:text="${shelter.name}"></a>
+        <a th:href="@{'/profile/'+ ${shelter.id}}" th:text="${shelter.name}"></a>
         </li>
     </ul>
     <form method="post" action="/addNew" >
