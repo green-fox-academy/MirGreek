@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${person}"></title>
+</head>
+<body>
+<h1 th:text="'Congrats, '+ ${person} + '! You are new adopter now!'"></h1>
+<h3>You have new friend(s)! :)</h3>
+<ul th:each="animal:${person}">
+    <li th:text="${animal}">
+    </li>
+</ul>
+</body>
+</html>
