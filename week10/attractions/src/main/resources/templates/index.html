@@ -27,9 +27,8 @@
             <td th:text="*{recommendedAge}"></td>
             <td th:text="*{duration}"></td>
              <td>
-                 <form action="#" th:action="@{'/edit/'+ *{id}}">
-                    <input type="submit" value="edit">
-                </form>
+                 <a th:href="@{'/edit/' + *{id}}">
+                    EDITke</a>
              </td>
         </tr>
 
@@ -38,6 +37,7 @@
 </Table>
 
 <form action="/add" method="post" th:object="${attraction}">
+    <input type="hidden" th:field="*{id}">
     <label for="name" >Name</label>
     <input type="text" th:field="*{name}"><br>
     <label for="city" >City</label>

@@ -37,7 +37,8 @@ public class AttractionController {
   @GetMapping("/edit/{id}")
   public String editItem(@PathVariable(value="id")Integer id, Model model){
     model.addAttribute("attraction",attractionService.findAttractionById(id));
-
+    //attractionService.findAttractionList();
+    model.addAttribute("attractions",attractionService.findAttractionList());
     return "index";
   }
 

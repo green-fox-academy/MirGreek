@@ -16,7 +16,7 @@ public class AttractionServiceImpl implements AttractionService {
   public AttractionServiceImpl(AttractionsRepository attractionsRepository) {
     this.attractionsRepository = attractionsRepository;
   }
-
+  @Override
   public List<Attraction> findAttractionList(){
     return attractionsRepository.findAll();
   }
@@ -24,8 +24,7 @@ public class AttractionServiceImpl implements AttractionService {
   @Override
   public Attraction findAttractionById(Integer id) {
     Attraction attraction = attractionsRepository.findById(id).get();
-    attractionsRepository.save(attraction);
-    return null;
+    return attractionsRepository.save(attraction);
   }
 
   @Override
