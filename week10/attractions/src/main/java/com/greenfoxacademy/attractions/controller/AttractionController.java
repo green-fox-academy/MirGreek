@@ -35,9 +35,10 @@ public class AttractionController {
    return "redirect:/";
   }
   @GetMapping("/edit/{id}")
-  public String editItem(@PathVariable(value="id")Integer id){
-    attractionService.findAttractionById(id);
-    return "redirect:/";
+  public String editItem(@PathVariable(value="id")Integer id, Model model){
+    model.addAttribute("attraction",attractionService.findAttractionById(id));
+
+    return "index";
   }
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.tymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Attractions</title>
@@ -26,7 +26,11 @@
             <td th:text="*{latitude}"></td>
             <td th:text="*{recommendedAge}"></td>
             <td th:text="*{duration}"></td>
-
+             <td>
+                 <form action="#" th:action="@{'/edit/'+ *{id}}">
+                    <input type="submit" value="edit">
+                </form>
+             </td>
         </tr>
 
     </tbody>
@@ -48,7 +52,7 @@
     <input type="text" th:field="*{latitude}"><br>
     <label for="duration" >Duration</label>
     <input type="text" th:field="*{duration}"><br>
-    <input type="submit" value="edit">
+
     <div>
         <input type="submit">
     </div>
