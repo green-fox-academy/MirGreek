@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.tymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Attractions</title>
+</head>
+<body>
+<Table>
+    <thead>
+        <th>Name</th>
+        <th>City</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Longitude</th>
+        <th>Latitude</th>
+        <th>Recommended Age</th>
+        <th>Duration</th>
+    </thead>
+    <tbody>
+        <tr th:each="attraction : ${attractions}" th:object="${attraction}">
+            <td th:text="*{name}"></td>
+            <td th:text="*{city}"></td>
+            <td th:text="*{category}"></td>
+            <td th:text="*{price}"></td>
+            <td th:text="*{longitude}"></td>
+            <td th:text="*{latitude}"></td>
+            <td th:text="*{recommendedAge}"></td>
+            <td th:text="*{duration}"></td>
+
+        </tr>
+
+    </tbody>
+
+</Table>
+
+<form action="/add" method="post" th:object="${attraction}">
+    <label for="name" >Name</label>
+    <input type="text" th:field="*{name}"><br>
+    <label for="city" >City</label>
+    <input type="text" th:field="*{city}"><br>
+    <label for="category" >Category</label>
+    <input type="text" th:field="*{category}"><br>
+    <label for="price" >Price</label>
+    <input type="text" th:field="*{price}"><br>
+    <label for="longitude" >Longitude</label>
+    <input type="text" th:field="*{longitude}"><br>
+    <label for="latitude" >Latitude</label>
+    <input type="text" th:field="*{latitude}"><br>
+    <label for="duration" >Duration</label>
+    <input type="text" th:field="*{duration}"><br>
+    <div>
+        <input type="submit">
+    </div>
+
+</form>
+
+</body>
+</html>
