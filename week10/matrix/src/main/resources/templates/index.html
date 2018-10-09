@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Matrix Checker</title>
+</head>
+<body>
+<h1>Matrix Checker</h1>
+
+<h4>Check if your matrix is increasing</h4>
+<h4>Add a matrix and sit back while the evaluation happens</h4>
+<div></div><br>
+<h4>Enter your matrix</h4>
+<form method="post" action="/matrix" th:object="${matrix}">
+    <textarea cols="20" rows="5" th:field="${matrix.matrixNumbers}"></textarea><br>
+    <input type="submit" value="submit">
+</form>
+<h2>Result:</h2>
+<div th:if="${message}==true" th:text="${message.error}"></div>
+</body>
+</html>
