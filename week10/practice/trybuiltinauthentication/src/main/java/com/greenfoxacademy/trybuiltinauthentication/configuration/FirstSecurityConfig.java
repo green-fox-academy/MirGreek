@@ -20,7 +20,7 @@ public class FirstSecurityConfig extends WebSecurityConfigurerAdapter {
           .roles("USER")
         .and()
           .withUser("admin")
-          .password("pword")
+          .password("{noop}pword")
           .roles("ADMIN");
   }
 
