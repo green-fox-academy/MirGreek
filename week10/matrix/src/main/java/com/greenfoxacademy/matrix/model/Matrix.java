@@ -13,12 +13,18 @@ public class Matrix {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   Long id;
   String matrixNumbers;
+  boolean isSquare;
 
   public Matrix(String matrixNumbers) {
     this.matrixNumbers = matrixNumbers;
   }
 
   public Matrix() {
+  }
+
+  public Matrix(String matrixNumbers, boolean isSquare) {
+    this.matrixNumbers = matrixNumbers;
+    this.isSquare = isSquare;
   }
 
 
