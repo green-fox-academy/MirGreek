@@ -12,12 +12,12 @@ public class AuthRestController {
   public String getLoginPage(){
     return "Login";
   }
-  @Secured("ROLE_USER")
+  //@Secured("ROLE_USER")
   @RequestMapping("/stories")
   public String stories(){
     return "stories";
   }
-  @Secured("ROLE_ADMIN")
+  //@Secured("ROLE_ADMIN")
   @RequestMapping("/delete")
   public String delete(){
     return "delete";
