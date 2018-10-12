@@ -11,15 +11,16 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 public class FirstSecurityConfig extends WebSecurityConfigurerAdapter {
   @Autowired
-  public void configureAuth(AuthenticationManagerBuilder auth) throws Exception{
+  public void configureAuth(AuthenticationManagerBuilder auth) throws Exception {
+
     auth
         .inMemoryAuthentication()
-          .withUser("username")
-          .password("123")
+          .withUser("mir")
+          .password("{noop}pass")
           .roles("USER")
         .and()
-          .withUser("adminname")
-          .password("456")
+          .withUser("admin")
+          .password("pword")
           .roles("ADMIN");
   }
 
