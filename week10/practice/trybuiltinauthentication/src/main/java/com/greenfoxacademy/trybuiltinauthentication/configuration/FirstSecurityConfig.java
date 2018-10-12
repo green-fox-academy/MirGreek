@@ -29,13 +29,19 @@ public class FirstSecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity httpSec) throws Exception {
     httpSec
           .authorizeRequests()
+          .anyRequest().authenticated()
           .antMatchers(HttpMethod.GET,"/")
             .permitAll()
-          .antMatchers("/delete")
+          .antMatchers("/admin/**")
             .hasRole("ADMIN")
           .and()
-          .formLogin()
-          .permitAll();
+            .formLogin()
+            .permitAll()
+          .and()
+            .logout()
+            .logoutSuccessUrl("/login?logout")
+            .permitAll();
+
   }
 
 }
