@@ -1,21 +1,25 @@
 package com.greenfoxacademy.security.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.greenfoxacademy.security.models.User;
+import com.greenfoxacademy.security.repositories.UserRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
 
-  @GetMapping("/")
-  public String sayHello(){
-    return "Hello";
+  UserRepository userRepository;
+  BCryptPasswordEncoder bCryptPasswordEncoder;
+
+  public UserController(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    this.userRepository = userRepository;
+    this.bCryptPasswordEncoder = bCryptPasswordEncoder;
   }
-  @RequestMapping("/users")
-  public @ResponseBody String getUsers() {
-    return "{\"users\":[{\"firstname\":\"Richard\", \"lastname\":\"Feynman\"}," +
-        "{\"firstname\":\"Marie\",\"lastname\":\"Curie\"}]}";
+
+  @PostMapping("/sign-up")
+  public void signUp( @RequestBody User user ){
+    user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+    userRepository.save(user);
   }
 
 }
