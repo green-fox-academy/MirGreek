@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-@Configuration
+/*@Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Autowired
@@ -14,12 +14,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     auth
         .inMemoryAuthentication()
         .withUser("mir")
-        .password("pass")
+        .password("{noop}pass")
         .roles("USER")
         .and()
         .withUser("admin")
-        .password("pass")
+        .password("{noop}pass")
         .roles("ADMIN");
   }
-  
+
 }
+*/

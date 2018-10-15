@@ -1,6 +1,7 @@
 package com.greenfoxacademy.matrix.controller;
 
 import com.greenfoxacademy.matrix.model.Matrix;
+import com.greenfoxacademy.matrix.model.Message;
 import com.greenfoxacademy.matrix.service.MatrixService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,20 +22,16 @@ public class MatrixController {
   }
 
   @GetMapping("/")
-  public String getMainPage(Model model, @RequestParam(value = "isSquared", required = false) String message) {
+  public String getMainPage(Model model, Message message) {
     model.addAttribute("matrix", new Matrix());
-
+    model.addAttribute("message",message);
     return "index";
   }
 
   @PostMapping("/matrix")
   public String getMatrix(Matrix matrix) {
-   // if (message.equals(true)){
-    //  model.addAttribute("message", message);
-   // }
     if( matrixService.checkIfMatrixIsSquared(matrix)){
-      return "redirect:/true";
-
+      return "index";
     } else
     return "redirect:/false";
 
