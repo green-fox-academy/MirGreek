@@ -23,6 +23,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .and()
         .httpBasic();
   }
+  @Override
+  public void configure(AuthenticationManagerBuilder auth) throws Exception {
+    auth
+        .inMemoryAuthentication()
+        .withUser("user").password("1").authorities("ROLE_USER")
+        .and()
+        .withUser("admin").password("2").roles("ADMIN");
+  }
 
 }
 
