@@ -8,10 +8,13 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import javax.sql.DataSource;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
+  @Autowired
+  DataSource dataSource;
 
   public void configAuth(HttpSecurity http) throws Exception {
 
@@ -26,10 +29,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   public void configure(AuthenticationManagerBuilder auth) throws Exception {
     auth
-        .inMemoryAuthentication()
-        .withUser("user").password("1").authorities("ROLE_USER")
-        .and()
-        .withUser("admin").password("2").roles("ADMIN");
+        .jdbcAuthentication()
+        .dataSource(dataSource)
+        .usersByUsernameQuery()
+
+
+        //The below seen code is without any related db or user
+        //.inMemoryAuthentication()
+        //.withUser("user").password("1").authorities("ROLE_USER")
+        //.and()
+        //.withUser("admin").password("2").roles("ADMIN");
   }
 
 }
