@@ -20,18 +20,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     http
         .authorizeRequests()
+        .antMatchers("/").hasRole("USER")
         .anyRequest().authenticated()
         .and()
         .formLogin()
+          .loginPage("/login").permitAll()
         .and()
         .httpBasic();
+
   }
   @Override
   public void configure(AuthenticationManagerBuilder auth) throws Exception {
     auth
         .jdbcAuthentication()
-        .dataSource(dataSource)
-        .usersByUsernameQuery()
+        .dataSource(dataSource);
 
 
         //The below seen code is without any related db or user
