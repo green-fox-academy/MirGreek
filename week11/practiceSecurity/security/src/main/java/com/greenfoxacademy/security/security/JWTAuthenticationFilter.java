@@ -28,9 +28,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     this.authenticationManager = authenticationManager;
   }
 
-  public JWTAuthenticationFilter() {
-  }
-
   @Override
   public Authentication attemptAuthentication(HttpServletRequest req,
                                               HttpServletResponse res) throws AuthenticationException {
