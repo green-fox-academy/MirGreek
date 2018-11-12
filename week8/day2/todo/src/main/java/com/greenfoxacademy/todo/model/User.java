@@ -1,9 +1,6 @@
 package com.greenfoxacademy.todo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class User {
@@ -12,6 +9,7 @@ public class User {
   Long id;
   String userName;
   String password;
+  //Todo todo;
 
   public User(Long id, String userName, String password) {
     this.id = id;

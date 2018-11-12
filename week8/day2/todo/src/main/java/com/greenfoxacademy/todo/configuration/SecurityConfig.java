@@ -20,13 +20,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     http
         .authorizeRequests()
-        .antMatchers("/").hasRole("USER")
-        .anyRequest().authenticated()
+        //.antMatchers("/todo/login").hasRole("USER")
+        .antMatchers("/**").permitAll()
         .and()
         .formLogin()
-          .loginPage("/login").permitAll()
-        .and()
-        .httpBasic();
+          .loginPage("/todo/login");
+        //.permitAll();
 
   }
   @Override
