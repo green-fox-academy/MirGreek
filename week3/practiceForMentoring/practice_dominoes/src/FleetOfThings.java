@@ -8,7 +8,7 @@ public class FleetOfThings {
     Thing eatLunch = new Thing("Eat lunch");
     eatLunch.complete();
     standUp.complete();
-    
+
 
     fleet.add(getMilk);
     fleet.add(removeObstacles);
