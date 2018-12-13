@@ -11,10 +11,12 @@ public class TimeConversion {
         int originalTime =  Integer.parseInt(firstPart);
 
         if (splittedTime[2].contains("PM")) {
-               if (originalTime!=12) {
-                   hunTime = originalTime + 12;
-               } else return "00:" + splittedTime[1] + ":" + splittedTime[2].substring(0,2);
-        }
+            if (originalTime!=12) {
+                hunTime = originalTime + 12;
+            } else return original.substring(0,8);
+        } else if (originalTime!=12) {
+            return original.substring(0,8);
+        } else return "00:" + splittedTime[1] + ":" + splittedTime[2].substring(0,2);
 
         return String.valueOf(hunTime) + ":" + splittedTime[1] + ":" + splittedTime[2].substring(0,2);
 
