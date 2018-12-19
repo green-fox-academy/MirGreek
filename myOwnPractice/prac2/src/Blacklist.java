@@ -47,7 +47,7 @@ public class Blacklist {
             for (int j = i; j <number ; j++) {
                 System.out.print(" ");
             }
-            for (int j = number; j >0 ; j--) {
+            for (int j = i; j >0 ; j--) {
                 System.out.print("#");
             }
             System.out.println(" ");

@@ -2,6 +2,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,30 +22,31 @@ public class StudentGrade {
             grades[gradesItr] = gradesItem;
         }
 
-        int[] result = gradingStudents(grades);
+         gradingStudents(grades);
 
-        gradingStudents(result);
+        //gradingStudents(result);
 
     }
 
     static int[] gradingStudents(int[] grades) {
-        int[] listToReturn = new int[grades.length];
+        List<Integer> listToReturn = new ArrayList<>();
         List<Integer> fiveMultiplicators = getFiveMultiplicators();
-
         for (int i = 0; i < grades.length; i++) {
-            if (grades[i] > 38 || grades[i] % 5 == 0 || grades[i] % 5 >= 2) {
-                listToReturn[i] = grades[i];
-                System.out.println(listToReturn[i]);
-            } else if (grades[i] % 5 > 3) {
-                int newGrade = Math.round((grades[i] + 5));
-                listToReturn[i]=newGrade;
-                System.out.println(listToReturn[i]);
-            }
-
+            if(grades[i]<38) {
+                listToReturn.add(grades[i]);
+            } else if (grades[i]% 5 == 0 && grades[i]<38) {
+                listToReturn.add(grades[i]);
+            } else if (grades[i] % 5 >= 3) {
+                listToReturn.add(grades[i] + (5-(grades[i] % 5)));
+             } else listToReturn.add(grades[i]);
         }
-            return listToReturn;
 
+        System.out.println(Arrays.asList(listToReturn.toArray()));
+
+            return listToReturn.stream().mapToInt(i->i).toArray();
         }
+
+
         public static List<Integer> getFiveMultiplicators () {
             List<Integer> multiplicators = new ArrayList<>();
 
