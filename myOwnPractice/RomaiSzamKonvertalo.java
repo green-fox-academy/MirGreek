@@ -1,3 +1,5 @@
+import com.sun.org.apache.xpath.internal.operations.Number;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -30,25 +32,59 @@ public class RomaiSzamKonvertalo {
     }
 
     public static void convert(String roman) {
+        int toReturn = 0;
         int temp = 0;
         HashMap<Integer,String> dictionary = numberDictionary();
+        String remainders = remainderCounter(roman);
         for (Entry<Integer, String> r: dictionary.entrySet()) {
             if (dictionary.containsValue(roman)) {
-                if(r.getValue().equals(roman)) {
+                if (r.getValue().equals(roman)) {
                     temp = r.getKey();
                 }
-
-            } else if (roman.contains("XX")) {
-                char[] teens = roman.toCharArray();
-                teenCounter(teens);
+            } else if (dictionary.containsValue(remainders)) {
+                if (r.getValue().equals(remainders)) {
+                    temp = r.getKey();
+                }
             }
         }
-        System.out.println(temp);
-    }
-    public static void teenCounter(char[] teens){
-        int count = 0;
-        for (int i = 0; i < teens.length; i++) {
-            
+        if (roman.contains("XX")) {
+            int teens = teenCounter(roman);
+            if (temp == 0) {
+                toReturn = teens;
+            } else {
+                toReturn = teens + temp;
+            }
         }
+        System.out.println(toReturn);
+    }
+    public static int teenCounter(String roman){
+        char[] teens = roman.toCharArray();
+        int count = 0;
+        StringBuilder remainder = new StringBuilder();
+        for (int i = 0; i < teens.length; i++) {
+            if (teens[i]=='X') {
+                count++;
+            } else {
+                remainder.append(teens[i]);
+            }
+        }
+
+        return count*10;
+    }
+
+    public static String remainderCounter(String roman){
+
+        char[] teens = roman.toCharArray();
+        int count = 0;
+        StringBuilder remainder = new StringBuilder();
+        for (int i = 0; i < teens.length; i++) {
+            if (teens[i]=='X') {
+                count++;
+            } else {
+                remainder.append(teens[i]);
+            }
+        }
+
+        return  remainder.toString();
     }
 }
