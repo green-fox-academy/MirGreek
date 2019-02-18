@@ -34,27 +34,40 @@ public class RomaiSzamKonvertalo {
     public static void convert(String roman) {
         int toReturn = 0;
         int temp = 0;
+        int temp2 = 0;
+        int teenTemp = 0;
         HashMap<Integer,String> dictionary = numberDictionary();
         String remainders = remainderCounter(roman);
+        int teens = teenCounter(roman);
         for (Entry<Integer, String> r: dictionary.entrySet()) {
             if (dictionary.containsValue(roman)) {
                 if (r.getValue().equals(roman)) {
                     temp = r.getKey();
                 }
+            //} else if () {
+
             } else if (dictionary.containsValue(remainders)) {
                 if (r.getValue().equals(remainders)) {
-                    temp = r.getKey();
+                    temp2 = r.getKey();
                 }
+            } else if (roman.contains(r.getValue())) {
+                    teenTemp = r.getKey();
             }
         }
+
+        System.out.println(temp + temp2);
+
         if (roman.contains("XX")) {
-            int teens = teenCounter(roman);
+            //int teen = teenCounter(roman);
             if (temp == 0) {
                 toReturn = teens;
             } else {
                 toReturn = teens + temp;
             }
+        } else if (roman.contains("X") && !roman.contains("XX")) {
+            System.out.println(teens + temp2);
         }
+
         System.out.println(toReturn);
     }
     public static int teenCounter(String roman){
