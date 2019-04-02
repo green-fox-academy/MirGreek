@@ -42,11 +42,11 @@ app.get('/best', function(req, res){
 
 app.get('/costumer-sold', function(request, response){
    
-    let sqlQuery = `SELECT Account, SUM(number_of_product_sold) as products_sold FROM orders WHERE Account LIKE "%${request.query.Account}%";`
-    
+    //let sqlQuery = `SELECT Account, SUM(number_of_product_sold) as products_sold FROM orders WHERE Account LIKE "%${request.query.Account}%" AND order_status LIKE "submitted_vod";`
+    let sqlQuery = `SELECT Account, SUM(number_of_product_sold) as products_sold FROM orders WHERE Account LIKE "${request.query.Account}%" AND  order_status="submitted_vod" GROUP BY Account;`
     connection.query(sqlQuery, function(err, costumer){
         if(err){
-            console.error(err.toString());
+            console.error('Could not get data' + err.toString());
             return;
         }
 
@@ -57,6 +57,22 @@ app.get('/costumer-sold', function(request, response){
         )
     })
     
+})
+
+app.get('/chart', function (request, response){
+
+    let sqlQuery = `SELECT Account, SUM(number_of_product_sold) as products_sold, MONTH( order_date) as month FROM orders WHERE order_status = "submitted_vod" GROUP BY MONTH(order_date);`
+
+    connection.query(sqlQuery, function(err, chart){
+        if(err){
+            console.error('Could not get data' + err.toString());
+            return;
+        }
+        response.send({
+            "data": chart
+        })
+    })
+
 })
 
 

@@ -11,22 +11,29 @@ let container = document.querySelector('#container')
 
 
 var pieChart = new Chart(CHART, {
-    type: 'pie',
+    type: 'bar',
     data: {
-        labels: ['pl', 'izé', 'hozé'],
+        labels: [], //'jan', 'feb', 'march'
         datasets: [{
-            label: 'kaka-intézmények',
-            data: [1,2,3],
+            label: 'Sold to costumer per month',
+            data: [],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
+                'rgb(232, 255, 153, 0.4)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgb(133, 138, 255, 0.5)',
+                'rgb(218, 255, 204, 0.8)',
+                'rgb(230, 227, 209, 0.7)',
+                'rgb(122, 260, 180, 0.4)'
             ]
         }]
     }
 })    
 
-console.log(pieChart.data.datasets[0].data)
+//console.log(pieChart.data.datasets[0].data)
 
 
 function ajax (method, url, callback ) {  //ajax(GET, url, callback/response)
@@ -70,10 +77,46 @@ function getFullTable(response){
                                     <td>${element.name}</td>
                                     <td>${element.product_name}</td>
                                  </tr>`
-        pieChart.data.datasets[0].data.push(element.Revenue)
+        
     }); 
 }
 
+function getChart(response) {
+    let labels = []
+
+    response.data.forEach(element =>{
+            labels.push(element.month)
+    })
+    addData(pieChart,labels,response.data)
+
+}
+function addData(chart,labelList, sqlData) {
+    for (let i = 0; i<labelList.length; i++) {
+        chart.data.labels.push(labelList[i]);
+    }
+
+    let array = []
+    for(let i = 0; i< sqlData.length; i++) {
+        array.push(sqlData[i].products_sold)
+    }
+
+    chart.data.datasets.forEach((element) => {
+       for(let i = 0; i< array.length; i++) {
+           element.data.push(array[i]);
+       }
+        
+    });
+    chart.update();
+}
+/* eredeti function:
+function addData(chart, label, data) {
+    chart.data.labels.push(label);
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(data);
+    });
+    chart.update();
+}
+*/
 
 
 function getCostumer(response){
@@ -88,5 +131,5 @@ button.addEventListener('click', function(){
     ajax('GET', query, getCostumer)
 })
 
-
+ajax('GET', '/chart', getChart)
 ajax('GET', '/best', getFullTable)
