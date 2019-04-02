@@ -31,40 +31,36 @@ var pieChart = new Chart(CHART, {
             ]
         }]
     }
-})    
+})
 
-//console.log(pieChart.data.datasets[0].data)
-
-
-function ajax (method, url, callback ) {  //ajax(GET, url, callback/response)
+function ajax (method, url, callback ) {
     let xhr = new XMLHttpRequest()
     xhr.open(method, url)
-    xhr.onload = function (){
-        callback(JSON.parse(xhr.responseText)) // response = JsON(parse(xhr.responseText))
+    xhr.onload = function () {
+        callback(JSON.parse(xhr.responseText))
     }
     xhr.send()
 }
 
-function getFullTable(response){
+function getFullTable (response) {
     tableTop3.innerHTML = `<thead class="thead-dark">
-                            <tr>
-                                <th class="text-center">Account</th>
-                                <th class="text-center">Currency</th>
-                                <th class="text-center">Account type ID</th>
-                                <th class="text-center">Salesperson Id</th>
-                                <th class="text-center">Order status</th>
-                                <th class="text-center">Order date</th>
-                                <th class="text-center">Number of product sold</th>
-                                <th class="text-center">Unit price</th>
-                                <th class="text-center">Revenue</th>
-                                <th class="text-center">Sales name</th>
-                                <th class="text-center">Product name</th>
-                            </tr>
+                                <tr>
+                                    <th class="text-center">Account</th>
+                                    <th class="text-center">Currency</th>
+                                    <th class="text-center">Account type ID</th>
+                                    <th class="text-center">Salesperson Id</th>
+                                    <th class="text-center">Order status</th>
+                                    <th class="text-center">Order date</th>
+                                    <th class="text-center">Number of product sold</th>
+                                    <th class="text-center">Unit price</th>
+                                    <th class="text-center">Revenue</th>
+                                    <th class="text-center">Sales name</th>
+                                    <th class="text-center">Product name</th>
+                                </tr>
                             </thead>`
     
     response.data.forEach(element => {
-        tableTop3.innerHTML += `
-                                <tr>
+        tableTop3.innerHTML += `<tr>
                                     <td>${element.Account}</td>  
                                     <td>${element.currency}</td>  
                                     <td>${element.account_type}</td>
@@ -76,57 +72,49 @@ function getFullTable(response){
                                     <td>${element.Revenue}</td>
                                     <td>${element.name}</td>
                                     <td>${element.product_name}</td>
-                                 </tr>`
+                                </tr>`
         
     }); 
 }
 
-function getChart(response) {
+function getChart (response) {
     let labels = []
 
-    response.data.forEach(element =>{
+    response.data.forEach(element => {
             labels.push(element.month)
     })
-    addData(pieChart,labels,response.data)
 
+    addData(pieChart, labels, response.data)
 }
-function addData(chart,labelList, sqlData) {
-    for (let i = 0; i<labelList.length; i++) {
-        chart.data.labels.push(labelList[i]);
+
+function addData (chart, labelList, sqlData) {
+    for (let i = 0; i < labelList.length; i++) {
+        chart.data.labels.push(labelList[i])
     }
 
     let array = []
-    for(let i = 0; i< sqlData.length; i++) {
+    for (let i = 0; i < sqlData.length; i++) {
         array.push(sqlData[i].products_sold)
     }
 
     chart.data.datasets.forEach((element) => {
-       for(let i = 0; i< array.length; i++) {
-           element.data.push(array[i]);
+       for (let i = 0; i < array.length; i++) {
+           element.data.push(array[i])
        }
         
     });
-    chart.update();
+    chart.update()
 }
-/* eredeti function:
-function addData(chart, label, data) {
-    chart.data.labels.push(label);
-    chart.data.datasets.forEach((dataset) => {
-        dataset.data.push(data);
-    });
-    chart.update();
-}
-*/
 
 
-function getCostumer(response){
+function getCostumer (response) {
     response.data.forEach(element => {
-        container.innerText = element.Account + ' nevű cég ennyit vásárolt:  '
-        container.innerText += element.products_sold + 'db'
+        container.innerText = element.Account + ' customer, Total number of purchase: '
+        container.innerText += element.products_sold + ' pieces'
     })
 }
 
-button.addEventListener('click', function(){
+button.addEventListener('click', function () {
     let query = `/costumer-sold?Account=${search.value}`
     ajax('GET', query, getCostumer)
 })
